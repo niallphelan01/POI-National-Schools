@@ -8,7 +8,7 @@ const server = Hapi.server({
     host: 'localhost'
 });
 
-
+require('./app/models/db');  //required to run mongodb
 
 async function init() {
     await server.register(require('@hapi/inert'));
@@ -23,10 +23,8 @@ async function init() {
         },
         redirectTo: '/'
     });
-
     server.auth.default('session');
 
-    let __dirname;
     server.views({
         engines: {
             hbs: require('handlebars')
