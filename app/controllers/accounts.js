@@ -1,5 +1,8 @@
 'use strict';
 
+const User = require('../models/user');
+const Boom = require('@hapi/boom');
+
 const Joi = require('@hapi/joi');
 //TODO rationalise the validations further as they a currently very simplified
 const schema = Joi.object({
@@ -17,7 +20,7 @@ const schema = Joi.object({
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
         .required(),
     email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ie','co.uk'] } })
         .required()
 });
    // .with('firstName', 'lastName','password','email'); //all four fields are required for form validation
@@ -42,18 +45,45 @@ const Accounts = {
         }
     },
     signup: {
+        //TODO consider adding a repeat password for the MVC.
         auth: false,
         handler: async function(request, h) {
-            const data = request.payload;
+            const payload = request.payload;
             try {
-                const value = await schema.validateAsync({firstName: data.firstName, lastName: data.lastName, password: data.password, email:data.email});
+                const value = await schema.validateAsync({firstName: payload.firstName, lastName: payload.lastName, password: payload.password, email: payload.email});
                 //test the fields against the validation information above
-                console.log("Validation tests okay for data included")
+                console.log("Validation tests completed successfully")
+                let user = await User.findByEmail(payload.email);
+                if (user) {
+                    let message = 'Email address is already registered';
+                    throw Boom.badData(message);
+                }
+                const newUser = new User({
+                    firstName: payload.firstName,
+                    lastName: payload.lastName,
+                    email: payload.email,
+                    password: payload.password
+                });
+                try{
+                    user = await newUser.save();
+                 } catch (err) {
+                    let message = 'unable to save user';
+                    throw Boom.badData(message);
+                }
+               try {
+                   request.cookieAuth.set({id: user.id});
+                   return h.redirect('/home');
+               }
+               catch (err)
+               {
+                   console.log("cookie implementation not working")
+               }
             }
             catch (err) {
                 console.log("Incorrect values used in fields" );
+                return h.view('signup', { errors: [{ message: err.message }] }); //show relevant error and ask the user to enter data again
                 //TODO handle errors to the main page to explain why the validation failed.
-                return h.redirect('/home');//reload the same page to all the user to re-enter information
+
             }
         }
     },
