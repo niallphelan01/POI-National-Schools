@@ -26,6 +26,7 @@ async function init() {
 
     server.auth.default('session');
 
+    let __dirname;
     server.views({
         engines: {
             hbs: require('handlebars')
