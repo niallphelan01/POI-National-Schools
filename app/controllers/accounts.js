@@ -44,6 +44,24 @@ const Accounts = {
             return h.view('login', { title: 'Login to Donations' });
         }
     },
+    login: {
+        auth: false,
+        handler: async function(request, h) {
+            const { email, password } = request.payload;
+            try {
+                let user = await User.findByEmail(email);
+                if (!user) {
+                    const message = 'Email address is not registered';
+                    throw Boom.unauthorized(message);
+                }
+                user.comparePassword(password);
+                request.cookieAuth.set({ id: user.id });
+                return h.redirect('/home');
+            } catch (err) {
+                return h.view('login', { errors: [{ message: err.message }] });
+            }
+        }
+    },
     signup: {
         //TODO consider adding a repeat password for the MVC.
         auth: false,
