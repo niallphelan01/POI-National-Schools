@@ -112,6 +112,39 @@ const Accounts = {
             }
         }
     },
+    showSettings: {
+        handler: async function(request, h) {
+            try {
+                var id = request.auth.credentials.id;
+                const user = await User.findById(id).lean();
+
+                return h.view('settings', {title: 'User settings', user: user});
+            }catch (err){
+                return h.view ('login', {errors: [{message: err.message}]});
+            }
+        }
+    },
+    updateSettings: {
+        handler: async function(request, h) {
+            const payload = request.payload;
+            try {
+                const value = await schema.validateAsync({firstName: payload.firstName, lastName: payload.lastName, password: payload.password, email: payload.email});
+            const id = request.auth.credentials.id;
+            const user = await User.findById(id);
+            user.firstName = payload.firstName;
+            user.lastName = payload.lastName;
+            user.email = payload.email;
+            user.password = payload.password;
+            await user.save();
+            return h.redirect('/home');
+        }catch (err){
+                var id = request.auth.credentials.id;
+                const user = await User.findById(id).lean();
+                return h.view('settings', {title: 'User settings', user: user, errors: [{message: err.message}]});
+            }
+        }
+
+    },
 
 };
 module.exports = Accounts;
