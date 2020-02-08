@@ -7,20 +7,24 @@
         <article class="eight wide column">
             <table class="ui celled table segment">
                 <thead>
-                <tr>
+                <tr><th>Delete</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Authorisation level</th>
+                    <th>ObjectId</th>
                 </tr>
                 </thead>
                 <tbody>
                 {{#each users}}
                     <tr>
+                        <td><a href="/userSettings/deleteUser/{{this._id}}" class="ui icon button">
+                            <i class="icon trash"></i></a></td>
                         <td> {{this.firstName}}</td>
                         <td> {{this.lastName}} </td>
                         <td> {{this.email}} </td>
                         <td> {{this.level}} </td>
+                        <td>{{this._id}}</td>
                     </tr>
                 {{/each}}
                 </tbody>

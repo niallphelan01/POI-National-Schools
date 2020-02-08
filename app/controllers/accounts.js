@@ -32,6 +32,23 @@ const Accounts = {
             return h.view('main', {title: 'Welcome to Poi site'});
         }
     },
+    deleteUser:{
+        auth: false,
+        handler: async function(request, h) {
+            const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
+            const userToDelete = await User.findById(id);
+            await userToDelete.delete();
+            console.log(userToDelete);
+            const users = await User.find().populate().lean();
+            return h.view('userSettings', {
+                title: 'Users',
+                users: users
+            });
+        }
+
+
+
+    },
     superAdmin: {
         auth: false,
         handler: function (request, h) {
