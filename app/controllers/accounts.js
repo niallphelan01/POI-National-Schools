@@ -29,19 +29,25 @@ const Accounts = {
     index: {
         auth: false,
         handler: function (request, h) {
-            return h.view('main', {title: 'Welcome to Donations'});
+            return h.view('main', {title: 'Welcome to Poi site'});
+        }
+    },
+    superAdmin: {
+        auth: false,
+        handler: function (request, h) {
+            return h.view('superAdminHome', {title: 'Welcome the superAdmin page'});
         }
     },
     showSignup: {
         auth: false,
         handler: function(request, h) {
-            return h.view('signup', { title: 'Sign up for Donations' });
+            return h.view('signup', { title: 'Sign up for Poi Site' });
         }
     },
     showLogin: {
         auth: false,
         handler: function(request, h) {
-            return h.view('login', { title: 'Login to Donations' });
+            return h.view('login', { title: 'Login to POI site' });
         }
     },
     login: {
@@ -56,7 +62,12 @@ const Accounts = {
                 }
                 user.comparePassword(password);
                 request.cookieAuth.set({ id: user.id });
-                return h.redirect('/home');
+                if (user.level ==="superAdmin") {
+                    return h.redirect('/superAdminHome');
+                }
+                else{
+                    return h.redirect('/home');
+                }
             } catch (err) {
                 return h.view('login', { errors: [{ message: err.message }] });
             }
@@ -114,13 +125,24 @@ const Accounts = {
             }
         }
     },
+    userShowSettings:{
+        handler: async function(request, h) {
+            const users = await User.find().populate().lean();
+
+            return h.view('userSettings', {
+                title: 'Users',
+                users: users
+            });
+        }
+},
     showSettings: {
         handler: async function(request, h) {
             try {
                 let userLevel;
                 var id = request.auth.credentials.id;
                 const user = await User.findById(id).lean();
-                return h.view('settings', {title: 'User settings', user: user, userLevel: user.level});
+                    return h.view('settings', { title: 'User settings', user: user, userLevel: user.level });
+
             }catch (err){
                 return h.view ('login', {errors: [{message: err.message}]});
             }
