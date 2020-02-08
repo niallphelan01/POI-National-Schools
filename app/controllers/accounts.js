@@ -75,6 +75,7 @@ const Accounts = {
         handler: async function(request, h) {
             const payload = request.payload;
             try {
+                const level = "basic"; //initial user level
                 const value = await schema.validateAsync({firstName: payload.firstName, lastName: payload.lastName, password: payload.password, email: payload.email});
                 //test the fields against the validation information above
                 console.log("Validation tests completed successfully")
@@ -87,7 +88,8 @@ const Accounts = {
                     firstName: payload.firstName,
                     lastName: payload.lastName,
                     email: payload.email,
-                    password: payload.password
+                    password: payload.password,
+                    level: level
                 });
                 try{
                     user = await newUser.save();
