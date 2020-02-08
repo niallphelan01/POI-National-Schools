@@ -15,6 +15,8 @@ module.exports = [
     //{ method: 'POST', path: '/settings', config: Accounts.userUpdateSettings },
     { method: 'GET', path: '/superAdminHome', config: Accounts.superAdmin},
     {method: 'GET', path: '/userSettings/deleteUser/{id}', config: Accounts.deleteUser},
+    {method: 'GET', path: '/userSettings/updateUserToAdmin/{id}', config: Accounts.updateUserToAdmin},
+    {method: 'GET', path: '/userSettings/updateAdminToUser/{id}', config: Accounts.updateAdminToUser},
 
 
 

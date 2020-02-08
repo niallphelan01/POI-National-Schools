@@ -1,9 +1,7 @@
 {{> mainMenuSuperAdmin _id="user settings" }}
 <section class="ui raised segment">
     <div class="ui grid">
-        <aside class="six wide column">
 
-        </aside>
         <article class="eight wide column">
             <table class="ui celled table segment">
                 <thead>
@@ -13,6 +11,8 @@
                     <th>Email</th>
                     <th>Authorisation level</th>
                     <th>ObjectId</th>
+                    <th>Upgrade to admin</th>
+                    <th>Downgrade to user</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -25,6 +25,10 @@
                         <td> {{this.email}} </td>
                         <td> {{this.level}} </td>
                         <td>{{this._id}}</td>
+                        <td><a href="/userSettings/updateUserToAdmin/{{this._id}}" class="ui icon button">
+                            <i class="arrow up icon"></i></a> </td>
+                        <td><a href="/userSettings/updateAdminToUser/{{this._id}}" class="ui icon button">
+                            <i class="arrow down icon"></i></a> </td>
                     </tr>
                 {{/each}}
                 </tbody>
