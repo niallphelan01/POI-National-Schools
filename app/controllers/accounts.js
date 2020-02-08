@@ -62,6 +62,13 @@ const Accounts = {
             }
         }
     },
+    logout: {
+        auth: false,
+        handler: function(request, h) {
+            request.cookieAuth.clear();
+            return h.redirect('/');
+        }
+    },
     signup: {
         //TODO consider adding a repeat password for the MVC.
         auth: false,
