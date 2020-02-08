@@ -117,10 +117,10 @@ const Accounts = {
     showSettings: {
         handler: async function(request, h) {
             try {
+                let userLevel;
                 var id = request.auth.credentials.id;
                 const user = await User.findById(id).lean();
-
-                return h.view('settings', {title: 'User settings', user: user});
+                return h.view('settings', {title: 'User settings', user: user, userLevel: user.level});
             }catch (err){
                 return h.view ('login', {errors: [{message: err.message}]});
             }
