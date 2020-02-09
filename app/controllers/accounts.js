@@ -29,19 +29,99 @@ const Accounts = {
     index: {
         auth: false,
         handler: function (request, h) {
-            return h.view('main', {title: 'Welcome to Donations'});
+            return h.view('main', {title: 'Welcome to Poi site'});
+        }
+    },
+    deleteUser:{
+        auth: false,
+        handler: async function(request, h) {
+            const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
+            const userToDelete = await User.findById(id);
+            await userToDelete.delete();
+            console.log(userToDelete);
+            const users = await User.find().populate().lean();
+            return h.view('userSettings', {
+                title: 'Users',
+                users: users
+            });
+        }
+    },
+    updateUserToAdmin:{
+        auth: false,
+        handler: async function(request, h) {
+            const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
+            const userToUpdate = await User.findById(id);
+            userToUpdate.level = "admin";
+            await userToUpdate.save();
+            console.log(id);
+            const users = await User.find().populate().lean();
+            return h.view('userSettings', {
+                title: 'Users',
+                users: users
+            });
+        }
+    },
+    updateAdminToUser:{
+        auth: false,
+        handler: async function(request, h) {
+            const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
+            const userToUpdate = await User.findById(id);
+            userToUpdate.level = "basic";
+            await userToUpdate.save();
+            console.log(id);
+            const users = await User.find().populate().lean();
+            return h.view('userSettings', {
+                title: 'Users',
+                users: users
+            });
+        }
+    },
+    superAdmin: {
+        auth: false,
+        handler: function (request, h) {
+            return h.view('superAdminHome', {title: 'Welcome the superAdmin page'});
         }
     },
     showSignup: {
         auth: false,
         handler: function(request, h) {
-            return h.view('signup', { title: 'Sign up for Donations' });
+            return h.view('signup', { title: 'Sign up for Poi Site' });
         }
     },
     showLogin: {
         auth: false,
         handler: function(request, h) {
-            return h.view('login', { title: 'Login to Donations' });
+            return h.view('login', { title: 'Login to POI site' });
+        }
+    },
+    login: {
+        auth: false,
+        handler: async function(request, h) {
+            const { email, password } = request.payload;
+            try {
+                let user = await User.findByEmail(email);
+                if (!user) {
+                    const message = 'Email address is not registered';
+                    throw Boom.unauthorized(message);
+                }
+                user.comparePassword(password);
+                request.cookieAuth.set({ id: user.id });
+                if (user.level ==="superAdmin") {
+                    return h.redirect('/superAdminHome');
+                }
+                else{
+                    return h.redirect('/home');
+                }
+            } catch (err) {
+                return h.view('login', { errors: [{ message: err.message }] });
+            }
+        }
+    },
+    logout: {
+        auth: false,
+        handler: function(request, h) {
+            request.cookieAuth.clear();
+            return h.redirect('/');
         }
     },
     signup: {
@@ -50,6 +130,7 @@ const Accounts = {
         handler: async function(request, h) {
             const payload = request.payload;
             try {
+                const level = "basic"; //initial user level
                 const value = await schema.validateAsync({firstName: payload.firstName, lastName: payload.lastName, password: payload.password, email: payload.email});
                 //test the fields against the validation information above
                 console.log("Validation tests completed successfully")
@@ -62,7 +143,8 @@ const Accounts = {
                     firstName: payload.firstName,
                     lastName: payload.lastName,
                     email: payload.email,
-                    password: payload.password
+                    password: payload.password,
+                    level: level
                 });
                 try{
                     user = await newUser.save();
@@ -86,6 +168,50 @@ const Accounts = {
 
             }
         }
+    },
+    userShowSettings:{
+        handler: async function(request, h) {
+            const users = await User.find().populate().lean();
+
+            return h.view('userSettings', {
+                title: 'Users',
+                users: users
+            });
+        }
+},
+    showSettings: {
+        handler: async function(request, h) {
+            try {
+                let userLevel;
+                var id = request.auth.credentials.id;
+                const user = await User.findById(id).lean();
+                    return h.view('settings', { title: 'User settings', user: user, userLevel: user.level });
+
+            }catch (err){
+                return h.view ('login', {errors: [{message: err.message}]});
+            }
+        }
+    },
+    updateSettings: {
+        handler: async function(request, h) {
+            const payload = request.payload;
+            try {
+                const value = await schema.validateAsync({firstName: payload.firstName, lastName: payload.lastName, password: payload.password, email: payload.email});
+            const id = request.auth.credentials.id;
+            const user = await User.findById(id);
+            user.firstName = payload.firstName;
+            user.lastName = payload.lastName;
+            user.email = payload.email;
+            user.password = payload.password;
+            await user.save();
+            return h.redirect('/home');
+        }catch (err){
+                var id = request.auth.credentials.id;
+                const user = await User.findById(id).lean();
+                return h.view('settings', {title: 'User settings', user: user, errors: [{message: err.message}]});
+            }
+        }
+
     },
 
 };

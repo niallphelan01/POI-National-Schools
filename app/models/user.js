@@ -8,15 +8,13 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    password: String
+    password: String,
+    level: String
 });
 
 userSchema.statics.findByEmail = function(email) {
     return this.findOne({ email: email });
 };
-
-
-
 
 userSchema.methods.comparePassword = function(candidatePassword) {
     const isMatch = this.password === candidatePassword;
