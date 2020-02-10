@@ -19,6 +19,8 @@
                     <th>Girls No.</th>
                     <th>Total No.</th>
                     <th>edit</th>
+                    <th>delete</th>
+                </tr>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,6 +35,8 @@
                         <td> {{T_13_14}}</td>
                         <td><a href="/updatePoi/{{_id}}" class="ui icon button">
                             <i class="edit icon"></i></a> </td>
+                        <td><a href="/deletePoi{{_id}}" class="ui icon button">
+                            <i class="icon trash"></i></a></td>
                     </tr>
                 {{/each}}
                 </tbody>
