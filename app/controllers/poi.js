@@ -17,6 +17,27 @@ const Pois = {
             });
         }
     },
+  deletePoi:{
+    handler: async function(request, h) {
+      const id = request.params.id;
+      const poiToDelete = await Poi.findById(id);
+
+      var userid = request.auth.credentials.id;
+      var user = await User.findById(userid).lean();
+      if (user.level === "basic") {
+        const message = "You have insufficient rights, please contact the superAdmin to get sufficient rights"
+        return h.view('home', {
+          title: 'Poi data',
+          user: user,
+          errors: [{ message: message }]
+        });
+      }
+      else if (user.level === "admin") {
+        await poiToDelete.delete();
+        return h.redirect('/home');
+        };
+    }
+  },
   showDetails: {
     handler: async function(request, h) {
       //handle whether the user is a admin or not
@@ -27,6 +48,7 @@ const Pois = {
       const poi = await Poi.findById(id).lean();
       if (user.level === "basic") {
         const message = "You have insufficient rights, please contact the superAdmin to get sufficient rights"
+        const pois = await Poi.find().populate().lean();
         return h.view('home', {
           title: 'Poi data',
           user: user,
