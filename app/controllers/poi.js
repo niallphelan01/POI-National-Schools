@@ -49,20 +49,45 @@ const Pois = {
             var date = currentDate.getDate();
             var month = currentDate.getMonth(); //Be careful! January is 0 not 1
             var year = currentDate.getFullYear();
-
             var dateString = date + "-" +(month + 1) + "-" + year;
             const poi = request.payload;
             const id = request.auth.credentials.id;
             var user = await User.findById(id);
            const poiData = await Poi.findById(poi.id);  //used a hidden field in the form to pass through the id of the poiData
-           poiData.Add_3 = poi.Add_3;
-           poi.userUpdated = user.id;
 
-             await poiData.updateOne({
-               userUpdated: user.id,
-               dateUpdated: dateString
-             });
-           await poiData.save()
+            if(typeof poiData.userUpdated==='undefined') //check to see if the field userUpdated has been entered into the db
+            {
+              console.log("sending user updating and date uploaded to the database");
+              await poiData.updateOne({
+                    userUpdated: user.id,
+                    dateUpdated: dateString
+                });
+            }
+
+
+            //update the database fields from the form entry
+            poiData.Roll_No = poi.Roll_No;
+            poiData.Off_Name = poi.Off_Name;
+            poiData.County = poi.County;
+            poiData.Add_1 = poi.Add_1;
+            poiData.Add_2 = poi.Add_2;
+            poiData.Add_3 = poi.Add_3;
+            poiData.Ethos = poi.Ethos;
+            poiData.Island = poi.Island;
+            poiData.DEIS = poi.DEIS;
+            poiData.Gaeltacht = poi.Gaeltacht;
+            poiData.M_13_14 = parseInt(poi.Boy1314);
+            poiData.F_13_14= parseInt(poi.Girl1314);
+            poiData.T_13_14= parseFloat(poiData.M_13_14 + poiData.F_13_14,); //this forces the addition not concatenation of the addition
+            //we don't save the total directly incase of incorrect entry
+            poiData.xcoord = poi.xcoord;
+            poiData.ycoord=poi.ycoord;
+            poiData.Long=poi.Long;
+            poiData.Lat=poi.Lat;
+            poiData.userUpdated = user.id;
+            poiData.dateUpdated = dateString;
+
+           await poiData.save();
             return h.redirect('/home');
 
 
