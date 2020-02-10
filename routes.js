@@ -23,6 +23,8 @@ module.exports = [
 
 
     { method: 'GET', path: '/home', config: Pois.home },
+    { method: 'GET', path: '/newPoi', config: Pois.showPoi },
+    { method: 'POST', path: '/newPoi', config: Pois.newPoi },
     { method: 'GET', path: '/updatePoi/{id}', config: Pois.showDetails},
    { method: 'Post', path: '/poiUpdate', config: Pois.updateDetails},
     {

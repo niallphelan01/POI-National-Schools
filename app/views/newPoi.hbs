@@ -1,0 +1,84 @@
+{{> mainmenu _id="settings" }}
+
+<H3>Person Creating: {{user.firstName}} , {{user.lastName}}</H3>
+
+<section class="ui raised segment">
+    <div class="ui grid">
+        <div class="ui fifteen wide column">
+            <div class="ui stacked fluid form segment">
+                <form action="/newPoi" method="POST">
+                    <h3 class="ui header">Add new School information</h3>
+
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Offical Name</label> <input placeholder="School name" type="text" name="Off_Name">
+                        </div>
+                        <div class="field">
+                            <label>Roll Number</label> <input placeholder="Roll no" type="text" name="Roll_No">
+                        </div>
+                    </div>
+                    <div class="five fields">
+                        <div class="field">
+                            <label>Address Line 1</label> <input placeholder="Address Line 1" type="text" name="Add_1">
+                        </div>
+                        <div class="field">
+                            <label>Address line 2</label> <input placeholder="Address Line 2" type="text" name="Add_2">
+                        </div>
+                        <div class="field">
+                            <label>Address line 3</label> <input placeholder="Address Line 3"type="text" name="Add_3">
+                        </div>
+                        <div class="field">
+                            <label>Address line 4</label> <input placeholder="Address Line 4" type="text" name="Add_4">
+                        </div>
+                        <div class="field">
+                            <label>County</label> <input placeholder="County" type="text" name="County">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Ethos</label> <input placeholder="Ethos" type="text" name="Ethos">
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Island</label> <input placeholder="Island Y/N" type="text" name="Island">
+                        </div>
+                        <div class="field">
+                            <label>DEIS</label> <input placeholder="DEIS Y/N" type="text" name="Deis">
+                        </div>
+                        <div class="field">
+                            <label>Gaeltacht</label> <input placeholder="Gaeltacht Y/N" type="text" name="Gaeltacht">
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Boys year 2013/2014</label> <input placeholder="Boys 2013/2014" type="number" name="Boy1314">
+                        </div>
+                        <div class="field">
+                            <label>Girls year 2013/2014</label> <input placeholder="Girls 2013/2014"  type="number" name="Girl1314">
+                        </div>
+                        <div class="field">
+                            <label>Total year 2013/2014</label> <input placeholder="Total 2013/2014" " type="number" name="Total1314">
+                        </div>
+                    </div>
+                    <div class="four fields">
+                        <div class="field">
+                            <label>xcoordinate</label> <input placeholder="xcoordinate"  type="text" name="xcoord">
+                        </div>
+                        <div class="field">
+                            <label>ycoordinate</label> <input placeholder="ycoordinate"  type="text" name="ycoord">
+                        </div>
+                        <div class="field">
+                            <label>Long</label> <input placeholder="Long"  type="text" name="long">
+                        </div>
+                        <div class="field">
+                            <label>Lat</label> <input placeholder="Lat"  type="text" name="lat">
+                        </div>
+                    </div>
+                    <button class="ui blue submit button">Create</button>
+                </form>
+                {{> error }}
+            </div>
+
+        </div>
+
+    </div>
+</section>
