@@ -23,7 +23,13 @@ const poiSchema = new Schema({
     xcoord: Number,
     ycoord: Number,
     Long: Number,
-    Lat: Number
+    Lat: Number,
+    dateUpdated: String,
+    userUpdated: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+
+    }
 });
 
 poiSchema.statics.findByCounty= function(county) {

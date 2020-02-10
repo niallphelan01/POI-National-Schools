@@ -184,6 +184,7 @@ const Accounts = {
             try {
                 let userLevel;
                 var id = request.auth.credentials.id;
+                console.log("User ID: " +id);
                 const user = await User.findById(id).lean();
                     return h.view('settings', { title: 'User settings', user: user, userLevel: user.level });
 

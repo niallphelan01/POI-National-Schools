@@ -28,7 +28,6 @@
     </div>
 
     <script>
-
         function searchFunction() {
             var choiceColumn;
             var $choice = $('input[name="county"]:checked').val();   //looks for the value of the radio button checked
@@ -36,8 +35,10 @@
                 choiceColumn = 2;
             else if ($choice === "school")
                 choiceColumn = 0;
-            else if($choice ==="ethos")
+            else if ($choice === "ethos")
                 choiceColumn = 3;
+
+            console.log("test");
 
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("searchInput");
@@ -54,6 +55,7 @@
                         tr[i].style.display = "none";
                     }
 
+                }
             }
         }
 
