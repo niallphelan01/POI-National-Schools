@@ -1,0 +1,87 @@
+{{> mainmenu _id="settings" }}
+
+<H1>Person editing: {{user.firstName}} , {{user.lastName}}</H1>
+
+<section class="ui raised segment">
+    <div class="ui grid">
+        <div class="ui fifteen wide column">
+            <div class="ui stacked fluid form segment">
+                <form action="/poiUpdate" method="POST">
+                    <h3 class="ui header">Update School information</h3>
+                    <p>Last updated by: {{poi.userUpdated}} on: {{poi.dateUpdated}}</p>
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Offical Name</label> <input value="{{poi.Off_Name}}" type="text" name="Off_Name">
+                        </div>
+                        <div class="field">
+                            <label>Roll Number</label> <input value="{{poi.Roll_No}}" type="text" name="Roll_No">
+                        </div>
+                    </div>
+                    <div class="five fields">
+                        <div class="field">
+                           <label>Address Line 1</label> <input value="{{poi.Add_1}}" type="text" name="Add_1">
+                        </div>
+                        <div class="field">
+                           <label>Address line 2</label> <input value="{{poi.Add_2}}" type="text" name="Add_2">
+                        </div>
+                        <div class="field">
+                            <label>Address line 3</label> <input value="{{poi.Add_3}}" type="text" name="Add_3">
+                        </div>
+                        <div class="field">
+                            <label>Address line 4</label> <input value="{{poi.Add_4}}" type="text" name="Add_4">
+                        </div>
+                        <div class="field">
+                            <label>County</label> <input value="{{poi.County}}" type="text" name="county">
+                        </div>
+                    </div>
+                       <div class="field">
+                           <label>Ethos</label> <input value="{{poi.Ethos}}" type="text" name="ethos">
+                       </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Island</label> <input value="{{poi.Island}}" type="text" name="island">
+                        </div>
+                        <div class="field">
+                            <label>DEIS</label> <input value="{{poi.DEIS}}" type="text" name="deis">
+                        </div>
+                        <div class="field">
+                            <label>Gaeltacht</label> <input value="{{poi.Gaeltacht}}" type="text" name="gaeltacht">
+                        </div>
+                    </div>
+                    <div class="three fields">
+                        <div class="field">
+                            <label>Boys year 2013/2014</label> <input value="{{poi.M_13_14}}" type="text" name="boy1314">
+                        </div>
+                        <div class="field">
+                            <label>Girls year 2013/2014</label> <input value="{{poi.F_13_14}}" type="text" name="girl1314">
+                        </div>
+                        <div class="field">
+                            <label>Total year 2013/2014</label> <input value="{{poi.T_13_14}}" type="text" name="total1314">
+                        </div>
+                    </div>
+                    <div class="four fields">
+                        <div class="field">
+                            <label>xcoordinate</label> <input value="{{poi.xcoord}}" type="text" name="xcoord">
+                        </div>
+                        <div class="field">
+                            <label>ycoordinate</label> <input value="{{poi.ycoord}}" type="text" name="ycoord">
+                        </div>
+                        <div class="field">
+                            <label>Long</label> <input value="{{poi.Long}}" type="text" name="long">
+                        </div>
+                        <div class="field">
+                            <label>Lat</label> <input value="{{poi.Lat}}" type="text" name="lat">
+                        </div>
+                    </div>
+                    <div class="field">
+                         <input type = "hidden" value ="{{poi._id}}" type = "text" name="id">
+                    </div>
+                    <button class="ui blue submit button">Save</button>
+                </form>
+                {{> error }}
+            </div>
+
+        </div>
+
+    </div>
+</section>
