@@ -38,7 +38,6 @@ const Accounts = {
             const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
             const userToDelete = await User.findById(id);
             await userToDelete.delete();
-            console.log(userToDelete);
             const users = await User.find().populate().lean();
             return h.view('userSettings', {
                 title: 'Users',
