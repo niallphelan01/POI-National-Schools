@@ -34,7 +34,7 @@ const Pois = {
       }
       else if (user.level === "admin") {
         await poiToDelete.delete();
-        return h.redirect('/home');
+        return h.redirect('/adminHome');
         };
     }
   },
@@ -109,7 +109,15 @@ const Pois = {
             poiData.dateUpdated = dateString;
 
            await poiData.save();
-            return h.redirect('/home');
+
+
+            if (user.level === "basic") {
+              return h.redirect('/home');
+              }
+            else if (user.level === "admin") {
+              return h.redirect('/adminHome');
+            }
+
 
 
 

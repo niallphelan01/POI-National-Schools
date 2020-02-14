@@ -3,6 +3,7 @@
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
 const nodemailer = require('nodemailer');
+const Poi = require('../models/poi');
 
 const Joi = require('@hapi/joi');
 //TODO rationalise the validations further as they a currently very simplified
@@ -82,6 +83,16 @@ const Accounts = {
             return h.view('superAdminHome', {title: 'Welcome the superAdmin page'});
         }
     },
+    admin: {
+        auth: false,
+        handler: async function (request, h) {
+            const pois = await Poi.find().populate().lean();
+            return h.view('adminHome', {
+                title: 'National School admin page',
+                pois: pois
+            });
+        }
+        },
     showSignup: {
         auth: false,
         handler: function(request, h) {
@@ -108,6 +119,9 @@ const Accounts = {
                 request.cookieAuth.set({ id: user.id });
                 if (user.level ==="superAdmin") {
                     return h.redirect('/superAdminHome');
+                }
+                else if(user.level ==="admin"){
+                    return h.redirect('/adminHome');
                 }
                 else{
                     return h.redirect('/home');

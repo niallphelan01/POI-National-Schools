@@ -21,6 +21,7 @@ module.exports = [
 
     { method: 'GET', path: '/updateUserRequest', config: Accounts.updateUserRequestView },
     { method: 'POST', path: '/email', config: Accounts.email },
+    { method: 'GET', path: '/adminHome', config: Accounts.admin},
 
     { method: 'GET', path: '/home', config: Pois.home },
     { method: 'GET', path: '/newPoi', config: Pois.showPoi },
@@ -28,6 +29,7 @@ module.exports = [
     { method: 'GET', path: '/updatePoi/{id}', config: Pois.showDetails},
     {method: 'GET', path: '/deletePoi/{id}', config: Pois.deletePoi},
    { method: 'Post', path: '/poiUpdate', config: Pois.updateDetails},
+
     {
         method: 'GET',
         path: '/{param*}',
