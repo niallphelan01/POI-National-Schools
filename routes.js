@@ -13,14 +13,14 @@ module.exports = [
     { method: 'GET', path: '/settings', config: Accounts.showSettings },
     { method: 'POST', path: '/settings', config: Accounts.updateSettings },
     { method: 'GET', path: '/userAccountSettings', config: Accounts.userShowSettings },
-    //{ method: 'POST', path: '/settings', config: Accounts.userUpdateSettings },
+
     { method: 'GET', path: '/superAdminHome', config: Accounts.superAdmin},
     {method: 'GET', path: '/userSettings/deleteUser/{id}', config: Accounts.deleteUser},
     {method: 'GET', path: '/userSettings/updateUserToAdmin/{id}', config: Accounts.updateUserToAdmin},
     {method: 'GET', path: '/userSettings/updateAdminToUser/{id}', config: Accounts.updateAdminToUser},
 
-
-
+    { method: 'GET', path: '/updateUserRequest', config: Accounts.updateUserRequestView },
+    { method: 'POST', path: '/email', config: Accounts.email },
 
     { method: 'GET', path: '/home', config: Pois.home },
     { method: 'GET', path: '/newPoi', config: Pois.showPoi },

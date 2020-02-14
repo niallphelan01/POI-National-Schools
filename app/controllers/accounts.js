@@ -2,6 +2,7 @@
 
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
+const nodemailer = require('nodemailer');
 
 const Joi = require('@hapi/joi');
 //TODO rationalise the validations further as they a currently very simplified
@@ -123,6 +124,15 @@ const Accounts = {
             return h.redirect('/');
         }
     },
+    updateUserRequestView: {
+        handler: async function(request, h) {
+            let userLevel;
+            var id = request.auth.credentials.id;
+            const user = await User.findById(id).lean();
+            return h.view('updateUserRequest', { title: 'User settings update Request', user: user, userLevel: user.level });
+        }
+
+    },
     signup: {
         //TODO consider adding a repeat password for the MVC.
         auth: false,
@@ -212,6 +222,41 @@ const Accounts = {
             }
         }
 
+    },
+    email: {
+        auth: false,
+        handler: async function(request,h){
+            const payload = request.payload;
+
+            var transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                service: 'gmail',
+                auth: {
+                    user: process.env.adminEmail,
+                    pass: process.env.adminEmailPassword
+                }
+            });
+
+            var mailOptions = {
+                from: process.env.adminEmail,
+                to: payload.email,
+                bcc: process.env.adminEmail,
+                subject: 'Admin request',
+                text: 'Dear ' + payload.firstName + " " + payload.lastName + ", \n\nWe have received your request for update to admin status."
+                        + "\n\nYour request: " + payload.requestText + "\n\n Regards\n\n Admin Team"
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+            return h.redirect('/home');
+        }
     },
 
 };
