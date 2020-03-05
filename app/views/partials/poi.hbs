@@ -1,3 +1,63 @@
 <section class="ui raised segment">
-    <p>Poi information and layouts to be generated</p>
+    <div class="ui form">
+        <div class="inline fields">
+            <label>Please select the field to search from?</label>
+            <div class="field">
+                <div  class="ui radio checkbox">
+                    <input type="radio" name="county" checked="checked" value ="county">
+                    <label>County</label>
+                </div>
+            </div>
+            <div class="field">
+                <div  class="ui radio checkbox">
+                    <input type="radio" name="county" value ="ethos">
+                    <label>Ethos</label>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="county" value ="school">
+                    <label>School Name</label>
+                </div>
+            </div>
+            <div>
+                <input type="text" id="searchInput" onkeyup="searchFunction()" placeholder="Search for.." title="Type in details">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function searchFunction() {
+            var choiceColumn;
+            var $choice = $('input[name="county"]:checked').val();   //looks for the value of the radio button checked
+            if ($choice === "county")
+                choiceColumn = 2;
+            else if ($choice === "school")
+                choiceColumn = 0;
+            else if ($choice === "ethos")
+                choiceColumn = 3;
+
+            console.log("test");
+
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("poiTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[choiceColumn]; //selects the relevant column to check
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+
+                }
+            }
+        }
+
+    </script>
 </section>

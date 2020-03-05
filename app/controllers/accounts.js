@@ -2,6 +2,8 @@
 
 const User = require('../models/user');
 const Boom = require('@hapi/boom');
+const nodemailer = require('nodemailer');
+const Poi = require('../models/poi');
 
 const Joi = require('@hapi/joi');
 //TODO rationalise the validations further as they a currently very simplified
@@ -38,7 +40,6 @@ const Accounts = {
             const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
             const userToDelete = await User.findById(id);
             await userToDelete.delete();
-            console.log(userToDelete);
             const users = await User.find().populate().lean();
             return h.view('userSettings', {
                 title: 'Users',
@@ -82,6 +83,16 @@ const Accounts = {
             return h.view('superAdminHome', {title: 'Welcome the superAdmin page'});
         }
     },
+    admin: {
+        auth: false,
+        handler: async function (request, h) {
+            const pois = await Poi.find().populate().lean();
+            return h.view('adminHome', {
+                title: 'National School admin page',
+                pois: pois
+            });
+        }
+        },
     showSignup: {
         auth: false,
         handler: function(request, h) {
@@ -109,6 +120,9 @@ const Accounts = {
                 if (user.level ==="superAdmin") {
                     return h.redirect('/superAdminHome');
                 }
+                else if(user.level ==="admin"){
+                    return h.redirect('/adminHome');
+                }
                 else{
                     return h.redirect('/home');
                 }
@@ -123,6 +137,15 @@ const Accounts = {
             request.cookieAuth.clear();
             return h.redirect('/');
         }
+    },
+    updateUserRequestView: {
+        handler: async function(request, h) {
+            let userLevel;
+            var id = request.auth.credentials.id;
+            const user = await User.findById(id).lean();
+            return h.view('updateUserRequest', { title: 'User settings update Request', user: user, userLevel: user.level });
+        }
+
     },
     signup: {
         //TODO consider adding a repeat password for the MVC.
@@ -184,6 +207,7 @@ const Accounts = {
             try {
                 let userLevel;
                 var id = request.auth.credentials.id;
+                console.log("User ID: " +id);
                 const user = await User.findById(id).lean();
                     return h.view('settings', { title: 'User settings', user: user, userLevel: user.level });
 
@@ -212,6 +236,41 @@ const Accounts = {
             }
         }
 
+    },
+    email: {
+        auth: false,
+        handler: async function(request,h){
+            const payload = request.payload;
+
+            var transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                service: 'gmail',
+                auth: {
+                    user: process.env.adminEmail,
+                    pass: process.env.adminEmailPassword
+                }
+            });
+
+            var mailOptions = {
+                from: process.env.adminEmail,
+                to: payload.email,
+                bcc: process.env.adminEmail,
+                subject: 'Admin request',
+                text: 'Dear ' + payload.firstName + " " + payload.lastName + ", \n\nWe have received your request for update to admin status."
+                        + "\n\nYour request: " + payload.requestText + "\n\n Regards\n\n Admin Team"
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+            return h.redirect('/home');
+        }
     },
 
 };

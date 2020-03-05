@@ -1,7 +1,14 @@
 'use strict';
-
+const ImageStore = require('./app/utils/image-store');
 const Hapi = require('@hapi/hapi');
 require('dotenv').config();
+
+
+const credentials = {
+    cloud_name: process.env.cloudinary_name,
+    api_key: process.env.cloudinary_key,
+    api_secret: process.env.cloudinary_secret_key
+};
 
 const server = Hapi.server({
     port: 3000,
@@ -15,6 +22,7 @@ async function init() {
     await server.register(require('@hapi/vision'));
     await server.register(require('@hapi/cookie'));
 
+    ImageStore.configure(credentials);
     server.auth.strategy('session', 'cookie', {
         cookie: {
             name: process.env.cookie_name,
@@ -36,6 +44,9 @@ async function init() {
         layout: true,
         isCached: false
     });
+
+
+
 
     server.route(require('./routes'));
     await server.start();

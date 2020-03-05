@@ -1,0 +1,48 @@
+{{> mainMenuAdmin _id="adminHome" }}
+
+<section class="ui raised segment">
+
+    {{> poi }}
+
+    {{>error}}
+
+    <div class="ui  divider"></div>
+    <article class="eight wide column">
+        <table id="poiTable" class="ui celled table segment">
+            <thead>
+            <tr>
+                <th>School Name</th>
+                <th>Address Line 1</th>
+                <th>County</th>
+                <th>Ethos</th>
+                <th>Boys No.</th>
+                <th>Girls No.</th>
+                <th>Total No.</th>
+                <th>edit</th>
+                <th>delete</th>
+                <th>uploadImage</th>
+            </tr>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each pois}}
+                <tr>
+                    <td> {{Off_Name}} </td>
+                    <td> {{Add_1}} </td>
+                    <td> {{County}}</td>
+                    <td> {{Ethos}} </td>
+                    <td> {{M_13_14}}</td>
+                    <td> {{F_13_14}}</td>
+                    <td> {{T_13_14}}</td>
+                    <td><a href="/updatePoi/{{_id}}" class="ui icon button">
+                        <i class="edit icon"></i></a> </td>
+                    <td><a href="/deletePoi/{{_id}}" class="ui icon button">
+                        <i class="icon trash"></i></a></td>
+                    <td> {{>upload}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </article>
+    </div>
+</section>
