@@ -29,7 +29,9 @@ const poiSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
 
-    }
+    },
+    cloudinary_public_id: String,
+    cloudinary_secure_url: String
 });
 
 poiSchema.statics.findByCounty= function(county) {

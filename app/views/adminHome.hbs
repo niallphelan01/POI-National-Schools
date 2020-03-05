@@ -20,6 +20,7 @@
                 <th>Total No.</th>
                 <th>edit</th>
                 <th>delete</th>
+                <th>uploadImage</th>
             </tr>
             </tr>
             </thead>
@@ -37,6 +38,7 @@
                         <i class="edit icon"></i></a> </td>
                     <td><a href="/deletePoi/{{_id}}" class="ui icon button">
                         <i class="icon trash"></i></a></td>
+                    <td> {{>upload}}</td>
                 </tr>
             {{/each}}
             </tbody>
