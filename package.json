@@ -27,7 +27,9 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "handlebars": "^4.7.3",
+    "localStorage": "^1.0.4",
     "mongoose": "^5.9.1",
+    "node-localstorage": "^2.1.5",
     "nodemailer": "^6.4.2",
     "s3": "^4.4.0",
     "util": "^0.12.2"

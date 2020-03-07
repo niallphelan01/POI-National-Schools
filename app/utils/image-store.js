@@ -14,12 +14,12 @@ const ImageStore = {
     };
     cloudinary.config(credentials);
   },
- /*
-  getAllImages: async function() {
-    const result = await cloudinary.v2.api.resources();
+
+  getAllImagesbyPOi: async function(id) {
+    const result = await cloudinary.v2.api.resources_by_ids([id]); //only returns a cloudinary object(s) for tge public ids selected
     return result.resources;
   },
- */
+
   uploadImage: async function(imagefile, poiId, userObj) {
     let resultFromFunction = {};
     const poiToUpdate = await Poi.findById(poiId);
@@ -46,14 +46,16 @@ const ImageStore = {
       });
     //}
 
-  }
-
-  /*,
-  deleteImage: async function(id) {
-    await cloudinary.v2.uploader.destroy(id, {});
   },
 
-   */
+
+  deleteImage: async function(id) {
+    //delete the image selected
+    await cloudinary.v2.uploader.destroy(id, function(error,result) {
+      console.log(result, error) });
+
+  },
+
 
 };
 
