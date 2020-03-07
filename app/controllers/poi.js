@@ -180,7 +180,19 @@ const Pois = {
         return h.view('newPoi', { user: user, title: 'Add National school data' });
       }
     },
-  } /*,
+  },
+  singlePoiDisplay:{
+    handler: async function(request,h){
+      const id = request.params.id;
+      const poiToShow = await Poi.findById(id).lean();
+      return h.view('singlePoiDisplay', {
+        title: 'Single National School Display',
+        poi: poiToShow
+      });
+    }
+  }
+
+  /*,
   uploadImage:{
     handler: async function(request, h) {
       return h.view('uploadImage');

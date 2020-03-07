@@ -1,0 +1,91 @@
+{{> mainmenu _id="home" }}
+
+<article class="ui raised segment">
+
+
+
+    {{>error}}
+
+        <H2>School: {{poi.Off_Name}}</H2>
+    <div class="ui  divider"></div>
+        <div class="ui two column very relaxed grid">
+            <div class="column uk-card uk-card-default uk-card-medium uk-text-center uk-text-baseline uk-animation-scale-up ">
+                <div class="uk-card-media-top">
+                     <img src="{{poi.cloudinary_secure_url}}">
+                </div>
+            </div>
+                <div class = "column ">
+                <H3>Roll number: {{poi.Roll_No}}</H3>
+                    <div class="ui  divider"></div>
+                    <H3>Address:</H3>
+                    <H4>{{poi.Add_1}}</H4>
+                    <H4> {{poi.Add_2}}</H4>
+                    <H4> {{poi.Add_3}}</H4>
+                    <H4> {{poi.Add_4}}</H4>
+                    <H4> {{poi.Add_4}}</H4>
+                    <h4>County: {{poi.County}} </h4>
+                </div>
+
+            </div>
+
+    <div class ="ui divider"></div>
+    <div class="ui two column very relaxed grid">
+        <div class = "column">
+            <div class="ui styled fluid accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    2013/2014 Roll
+                </div>
+                <div class="content">
+                    <p>Boys: {{poi.M_13_14}}</p>
+                    <p>Girls: {{poi.F_13_14}}</p>
+                    <p>Total: {{poi.T_13_14}}</p>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                   Location details
+                </div>
+                <div class="content">
+                    <p> Xcoord: {{poi.xcoord}} </p>
+                    <p> Ycoord: {{poi.ycoord}} </p>
+                    <p> Longitude: {{poi.Long}} </p>
+                    <p> Latitude: {{poi.Lat}} </p>
+
+                </div>
+
+            </div>
+        </div>
+    <div class = 'column'>
+        <div class="ui styled fluid accordion">
+            <div class="title">
+                <i class="dropdown icon"></i>
+                Other details
+            </div>
+            <div class="content">
+                <p>Ethos: {{poi.Ethos}}</p>
+                <p>Island: {{poi.Island}}</p>
+                <p>Deis: {{poi.DEIS}}</p>
+                <p>Gaeltacht: {{poi.Gaeltacht}}</p>
+            </div>
+
+    </div>
+
+
+    </div>
+        <div class="ui two column very relaxed grid">
+            <div class = "column">
+                <a href="/home" class="ui primary button" >
+                    Back</a>
+            </div>
+        </div>
+
+
+</article>
+<script>
+    $('.ui.accordion').accordion('refresh');
+</script>
+</section>
+
+
+
+

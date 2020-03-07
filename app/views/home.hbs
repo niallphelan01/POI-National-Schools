@@ -15,9 +15,7 @@
                     <th>Address Line 1</th>
                     <th>County</th>
                     <th>Ethos</th>
-                    <th>Boys No.</th>
-                    <th>Girls No.</th>
-                    <th>Total No.</th>
+
                     <th>Image</th>
 
                 </tr>
@@ -26,13 +24,11 @@
                 <tbody>
                 {{#each pois}}
                     <tr>
-                        <td> {{Off_Name}} </td>
+                        <td> <a href="/singlePoiDisplay/{{_id}}"  class="ui primary button">{{Off_Name}}</a> </td>
                         <td> {{Add_1}} </td>
                         <td> {{County}}</td>
                         <td> {{Ethos}} </td>
-                        <td> {{M_13_14}}</td>
-                        <td> {{F_13_14}}</td>
-                        <td> {{T_13_14}}</td>
+
                         <td><div class="uk-card uk-card-default uk-card-small uk-text-center uk-text-baseline uk-animation-scale-up">
                             <div class="uk-card-media-top">
                                 <img src="{{cloudinary_secure_url}}">
