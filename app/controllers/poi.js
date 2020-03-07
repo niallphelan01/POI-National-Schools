@@ -3,6 +3,7 @@
 const User = require('../models/user');
 const Poi = require('../models/poi');
 const ImageStore = require('../utils/image-store');
+var localStorage = require('localStorage')
 
 const Boom = require('@hapi/boom');
 var Fs = require('fs');
@@ -50,6 +51,9 @@ const Pois = {
       const pois = await Poi.find().populate().lean();
       var user = await User.findById(userid).lean(); //find the user to check for adequate level
       const poi = await Poi.findById(id).lean();
+      localStorage.setItem('poiSelectedToShowImages', id); //use this as part of the deletion to images
+      const poiImages = await ImageStore.getAllImagesbyPOi(poi.cloudinary_public_id); //get the details of the cloudinary image to show
+      console.log(poiImages);
       if (user.level === "basic") {
         const message = "You have insufficient rights, please contact the superAdmin to get sufficient rights"
         const pois = await Poi.find().populate().lean();
@@ -63,7 +67,8 @@ const Pois = {
         return h.view('poiUpdate', {
           title: 'Update National school data',
           user: user,
-          poi: poi
+          poi: poi,
+          images: poiImages
         });
       }
     }

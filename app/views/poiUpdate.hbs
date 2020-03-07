@@ -78,10 +78,15 @@
                     </div>
                     <button class="ui blue submit button">Save</button>
                 </form>
+
                 {{> error }}
             </div>
 
         </div>
 
     </div>
+    {{#each images}}
+        {{> card}}
+    {{/each}}
+
 </section>
