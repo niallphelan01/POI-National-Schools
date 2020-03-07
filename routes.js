@@ -30,7 +30,9 @@ module.exports = [
     { method: 'GET', path: '/updatePoi/{id}', config: Pois.showDetails},
     {method: 'GET', path: '/deletePoi/{id}', config: Pois.deletePoi},
     { method: 'Post', path: '/poiUpdate', config: Pois.updateDetails},
+    {method: 'Get', path: '/singlePoiDisplay/{id}', config: Pois.singlePoiDisplay},
     {method: 'POST', path: '/uploadImageRequest/{id}', config: Gallery.uploadFile},
+    {method: 'GET', path: '/deletePoiImage/{id}', config: Gallery.deleteImage},
 
     //{ method: 'Post', path: '/poiUpdate', config: Pois.uploadImage},
 
