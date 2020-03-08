@@ -1,7 +1,13 @@
 'use strict';
 const ImageStore = require('./app/utils/image-store');
 const Hapi = require('@hapi/hapi');
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+const result = dotenv.config();
+if (result.error) {
+    console.log(result.error.message);
+    process.exit(1);
+}
 
 
 const credentials = {
@@ -23,7 +29,8 @@ async function init() {
     await server.register(require('@hapi/cookie'));
 
     ImageStore.configure(credentials);
-    server.auth.strategy('session', 'cookie', {
+
+    server.auth.strategy('session', 'cookie', { //strategy for protected routes
         cookie: {
             name: process.env.cookie_name,
             password: process.env.cookie_password,
@@ -31,6 +38,7 @@ async function init() {
         },
         redirectTo: '/'
     });
+
     server.auth.default('session');
 
     server.views({

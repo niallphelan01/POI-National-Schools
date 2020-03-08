@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 const Poi = require('../models/poi');
 
 const Joi = require('@hapi/joi');
+
 //TODO rationalise the validations further as they a currently very simplified
 const schema = Joi.object({
     firstName: Joi.string()
@@ -24,6 +25,7 @@ const schema = Joi.object({
     email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ie','co.uk'] } })
         .required()
+
 });
    // .with('firstName', 'lastName','password','email'); //all four fields are required for form validation
 
@@ -54,7 +56,6 @@ const Accounts = {
             const userToUpdate = await User.findById(id);
             userToUpdate.level = "admin";
             await userToUpdate.save();
-            console.log(id);
             const users = await User.find().populate().lean();
             return h.view('userSettings', {
                 title: 'Users',
@@ -65,16 +66,22 @@ const Accounts = {
     updateAdminToUser:{
         auth: false,
         handler: async function(request, h) {
-            const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
-            const userToUpdate = await User.findById(id);
-            userToUpdate.level = "basic";
-            await userToUpdate.save();
-            console.log(id);
-            const users = await User.find().populate().lean();
-            return h.view('userSettings', {
-                title: 'Users',
-                users: users
-            });
+            try {
+                const id = request.params.id;
+                //params.id given by the router with the ID (this.id from the view)
+                const userToUpdate = await User.findById(id);
+                userToUpdate.level = "basic";
+                await userToUpdate.save();
+                const users = await User.find().populate().lean();
+                return h.view('userSettings', {
+                    title: 'Users',
+                    users: users
+                });
+            }
+            catch (err){
+                return h.view('updateUserRequest', { errors: [{ message: err.message }] });
+
+            }
         }
     },
     superAdmin: {
@@ -154,7 +161,12 @@ const Accounts = {
             const payload = request.payload;
             try {
                 const level = "basic"; //initial user level
-                const value = await schema.validateAsync({firstName: payload.firstName, lastName: payload.lastName, password: payload.password, email: payload.email});
+                const value = await schema.validateAsync({
+                    firstName: payload.firstName,
+                    lastName: payload.lastName,
+                    password: payload.password,
+                    email: payload.email
+                });
                 //test the fields against the validation information above
                 console.log("Validation tests completed successfully")
                 let user = await User.findByEmail(payload.email);
@@ -169,30 +181,27 @@ const Accounts = {
                     password: payload.password,
                     level: level
                 });
-                try{
+                try {
                     user = await newUser.save();
-                 } catch (err) {
+                } catch (err) {
                     let message = 'unable to save user';
                     throw Boom.badData(message);
                 }
-               try {
-                   request.cookieAuth.set({id: user.id});
-                   return h.redirect('/home');
-               }
-               catch (err)
-               {
-                   console.log("cookie implementation not working")
-               }
-            }
-            catch (err) {
-                console.log("Incorrect values used in fields" );
+                try {
+                    request.cookieAuth.set({ id: user.id });
+                    return h.redirect('/home');
+                } catch (err) {
+                    console.log("cookie implementation not working")
+                }
+            } catch (err) {
+                console.log("Incorrect values used in fields");
                 return h.view('signup', { errors: [{ message: err.message }] }); //show relevant error and ask the user to enter data again
                 //TODO handle errors to the main page to explain why the validation failed.
 
             }
         }
     },
-    userShowSettings:{
+  userShowSettings:{
         handler: async function(request, h) {
             const users = await User.find().populate().lean();
 
