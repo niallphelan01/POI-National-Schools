@@ -26,6 +26,7 @@ module.exports = [
 
     { method: 'GET', path: '/home', config: Pois.home },
     { method: 'GET', path: '/newPoi', config: Pois.showPoi },
+    { method: 'GET', path: '/poiRegionSelect/{id}', config: Pois.poiRegionSelect},
     { method: 'POST', path: '/newPoi', config: Pois.newPoi },
     { method: 'GET', path: '/updatePoi/{id}', config: Pois.showDetails},
     {method: 'GET', path: '/deletePoi/{id}', config: Pois.deletePoi},

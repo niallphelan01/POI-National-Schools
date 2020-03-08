@@ -37,7 +37,7 @@
                        <div class="field">
                            <label>Ethos</label> <input value="{{poi.Ethos}}" type="text" name="Ethos">
                        </div>
-                    <div class="three fields">
+                    <div class="four fields">
                         <div class="field">
                             <label>Island</label> <input value="{{poi.Island}}" type="text" name="Island">
                         </div>
@@ -46,6 +46,16 @@
                         </div>
                         <div class="field">
                             <label>Gaeltacht</label> <input value="{{poi.Gaeltacht}}" type="text" name="Gaeltacht">
+                        </div>
+                        <div class="field">
+                            <label>Region</label> <select id="Region" name="Region">
+                            <option value={{poi.Region}}>{{poi.Region}}</option>
+                            <option value="west">West</option>
+                            <option value="east">East</option>
+                            <option value="southwest">Southwest</option>
+                            <option value="southeast">Southeast</option>
+                            <option value="north">North</option>
+                        </select>
                         </div>
                     </div>
                     <div class="three fields">

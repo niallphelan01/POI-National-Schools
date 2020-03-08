@@ -31,11 +31,12 @@ const poiSchema = new Schema({
 
     },
     cloudinary_public_id: String,
-    cloudinary_secure_url: String
+    cloudinary_secure_url: String,
+    Region: String
 });
 
-poiSchema.statics.findByCounty= function(county) {
-    return this.find({County: county });
+poiSchema.statics.findByRegion= function(region) {
+    return this.find({Region: region });
 };
 
 module.exports = Mongoose.model('Poi', poiSchema);
