@@ -115,6 +115,7 @@ const Pois = {
       poiData.Lat = poi.lat;
       poiData.userUpdated = user.id;
       poiData.dateUpdated = dateString;
+      poiData.Region = poi.Region;
 
       await poiData.save();
 
