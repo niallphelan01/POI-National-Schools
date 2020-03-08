@@ -89,7 +89,8 @@ const Pois = {
         console.log("sending user updating and date uploaded to the database");
         await poiData.updateOne({
           userUpdated: user.id,
-          dateUpdated: dateString
+          dateUpdated: dateString,
+          Region: poi.Region,
         });
       }
 
@@ -162,6 +163,7 @@ const Pois = {
         Lat: poi.Lat,
         userUpdated: user.id,
         dateUpdated: dateString,
+        Region: poi.Region,
 
       });
       await newPoi.save();
@@ -169,6 +171,39 @@ const Pois = {
     }
 
   },
+
+  poiRegionSelect: {
+    handler: async function(request, h) {
+      const id = request.params.id;
+      var poi = {};
+      if (id === 'all')
+         {
+          poi = await Poi.find().populate().lean(); //if all category is selected
+         }
+      else
+        {
+          poi = await Poi.findByRegion(id).lean(); //category by region
+
+        }
+      var userid = request.auth.credentials.id;
+      var user = await User.findById(userid).lean();
+
+      //user is taken to a different homepage depending on level
+      if (user.level === "basic") {
+        return h.view('home', {
+          title: 'Poi information page',
+          pois: poi
+        });
+      }
+      else{
+        return h.view('adminHome', {
+          title: 'Poi information page',
+          pois: poi
+        });
+      }
+    }
+  },
+
   showPoi: {
     handler: async function(request, h) {
       const pois = await Poi.find().populate().lean();

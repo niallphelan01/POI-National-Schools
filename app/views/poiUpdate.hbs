@@ -48,7 +48,14 @@
                             <label>Gaeltacht</label> <input value="{{poi.Gaeltacht}}" type="text" name="Gaeltacht">
                         </div>
                         <div class="field">
-                            <label>Region</label> <input value="{{poi.Region}}" type="text" name="Region">
+                            <label>Region</label> <select id="Region" name="Region">
+                            <option value={{poi.Region}}>{{poi.Region}}</option>
+                            <option value="west">West</option>
+                            <option value="east">East</option>
+                            <option value="southwest">Southwest</option>
+                            <option value="southeast">Southeast</option>
+                            <option value="north">North</option>
+                        </select>
                         </div>
                     </div>
                     <div class="three fields">
