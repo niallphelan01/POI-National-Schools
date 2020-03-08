@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 const Poi = require('../models/poi');
 
 const Joi = require('@hapi/joi');
+
 //TODO rationalise the validations further as they a currently very simplified
 const schema = Joi.object({
     firstName: Joi.string()
@@ -24,6 +25,7 @@ const schema = Joi.object({
     email: Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ie','co.uk'] } })
         .required()
+
 });
    // .with('firstName', 'lastName','password','email'); //all four fields are required for form validation
 
@@ -54,7 +56,6 @@ const Accounts = {
             const userToUpdate = await User.findById(id);
             userToUpdate.level = "admin";
             await userToUpdate.save();
-            console.log(id);
             const users = await User.find().populate().lean();
             return h.view('userSettings', {
                 title: 'Users',
@@ -65,16 +66,22 @@ const Accounts = {
     updateAdminToUser:{
         auth: false,
         handler: async function(request, h) {
-            const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
-            const userToUpdate = await User.findById(id);
-            userToUpdate.level = "basic";
-            await userToUpdate.save();
-            console.log(id);
-            const users = await User.find().populate().lean();
-            return h.view('userSettings', {
-                title: 'Users',
-                users: users
-            });
+            try {
+                const id = request.params.id;
+                //params.id given by the router with the ID (this.id from the view)
+                const userToUpdate = await User.findById(id);
+                userToUpdate.level = "basic";
+                await userToUpdate.save();
+                const users = await User.find().populate().lean();
+                return h.view('userSettings', {
+                    title: 'Users',
+                    users: users
+                });
+            }
+            catch (err){
+                return h.view('updateUserRequest', { errors: [{ message: err.message }] });
+
+            }
         }
     },
     superAdmin: {
@@ -150,6 +157,7 @@ const Accounts = {
     signup: {
         //TODO consider adding a repeat password for the MVC.
         auth: false,
+        },
         handler: async function(request, h) {
             const payload = request.payload;
             try {
