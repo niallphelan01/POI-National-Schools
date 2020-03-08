@@ -54,7 +54,6 @@ const Accounts = {
             const userToUpdate = await User.findById(id);
             userToUpdate.level = "admin";
             await userToUpdate.save();
-            console.log(id);
             const users = await User.find().populate().lean();
             return h.view('userSettings', {
                 title: 'Users',
@@ -65,16 +64,22 @@ const Accounts = {
     updateAdminToUser:{
         auth: false,
         handler: async function(request, h) {
-            const id = request.params.id;  //params.id given by the router with the ID (this.id from the view)
-            const userToUpdate = await User.findById(id);
-            userToUpdate.level = "basic";
-            await userToUpdate.save();
-            console.log(id);
-            const users = await User.find().populate().lean();
-            return h.view('userSettings', {
-                title: 'Users',
-                users: users
-            });
+            try {
+                const id = request.params.id;
+                //params.id given by the router with the ID (this.id from the view)
+                const userToUpdate = await User.findById(id);
+                userToUpdate.level = "basic";
+                await userToUpdate.save();
+                const users = await User.find().populate().lean();
+                return h.view('userSettings', {
+                    title: 'Users',
+                    users: users
+                });
+            }
+            catch (err){
+                return h.view('updateUserRequest', { errors: [{ message: err.message }] });
+
+            }
         }
     },
     superAdmin: {
