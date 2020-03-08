@@ -157,12 +157,16 @@ const Accounts = {
     signup: {
         //TODO consider adding a repeat password for the MVC.
         auth: false,
-        },
         handler: async function(request, h) {
             const payload = request.payload;
             try {
                 const level = "basic"; //initial user level
-                const value = await schema.validateAsync({firstName: payload.firstName, lastName: payload.lastName, password: payload.password, email: payload.email});
+                const value = await schema.validateAsync({
+                    firstName: payload.firstName,
+                    lastName: payload.lastName,
+                    password: payload.password,
+                    email: payload.email
+                });
                 //test the fields against the validation information above
                 console.log("Validation tests completed successfully")
                 let user = await User.findByEmail(payload.email);
@@ -177,30 +181,27 @@ const Accounts = {
                     password: payload.password,
                     level: level
                 });
-                try{
+                try {
                     user = await newUser.save();
-                 } catch (err) {
+                } catch (err) {
                     let message = 'unable to save user';
                     throw Boom.badData(message);
                 }
-               try {
-                   request.cookieAuth.set({id: user.id});
-                   return h.redirect('/home');
-               }
-               catch (err)
-               {
-                   console.log("cookie implementation not working")
-               }
-            }
-            catch (err) {
-                console.log("Incorrect values used in fields" );
+                try {
+                    request.cookieAuth.set({ id: user.id });
+                    return h.redirect('/home');
+                } catch (err) {
+                    console.log("cookie implementation not working")
+                }
+            } catch (err) {
+                console.log("Incorrect values used in fields");
                 return h.view('signup', { errors: [{ message: err.message }] }); //show relevant error and ask the user to enter data again
                 //TODO handle errors to the main page to explain why the validation failed.
 
             }
         }
     },
-    userShowSettings:{
+  userShowSettings:{
         handler: async function(request, h) {
             const users = await User.find().populate().lean();
 
