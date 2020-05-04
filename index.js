@@ -16,6 +16,8 @@ const credentials = {
     api_secret: process.env.cloudinary_secret_key
 };
 
+const os = require("os");
+
 const server = Hapi.server({
     port: process.env.PORT || 3000
    // host: 'localhost'

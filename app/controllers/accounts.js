@@ -254,7 +254,7 @@ const Accounts = {
             var transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 587,
-                secure: false, // true for 465, false for other ports
+                secure: true, // true for 465, false for other ports
                 service: 'gmail',
                 auth: {
                     user: process.env.adminEmail,
