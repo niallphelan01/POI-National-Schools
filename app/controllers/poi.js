@@ -4,7 +4,7 @@ const User = require('../models/user');
 const Poi = require('../models/poi');
 const ImageStore = require('../utils/image-store');
 var localStorage = require('localStorage')
-
+const os = require("os");
 const Boom = require('@hapi/boom');
 var Fs = require('fs');
 
@@ -16,9 +16,11 @@ const Pois = {
       const use = await User.find().populate().lean();
       //let county = "Carlow";
       // let user = await Poi.findByCounty(county); not used
-      return h.view('home', {
+        let hostname =os.hostname;
+        return h.view('home', {
         title: 'Poi information page',
-        pois: pois
+        pois: pois,
+        os: hostname
       });
     }
   },
