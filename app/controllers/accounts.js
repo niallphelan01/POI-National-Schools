@@ -6,6 +6,8 @@ const nodemailer = require('nodemailer');
 const Poi = require('../models/poi');
 
 const Joi = require('@hapi/joi');
+const bcrypt = require('bcrypt');          // ADDED
+const saltRounds = 10;
 
 //TODO rationalise the validations further as they a currently very simplified
 const schema = Joi.object({
@@ -168,13 +170,14 @@ const Accounts = {
                     email: payload.email
                 });
                 //test the fields against the validation information above
+                const hash = await bcrypt.hash(payload.password, saltRounds);    // ADDED
                 console.log("Validation tests completed successfully")
                 let user = await User.findByEmail(payload.email);
                 if (user) {
                     let message = 'Email address is already registered';
                     throw Boom.badData(message);
                 }
-                const newUser = new User({
+                    const newUser = new User({
                     firstName: payload.firstName,
                     lastName: payload.lastName,
                     email: payload.email,
@@ -184,7 +187,7 @@ const Accounts = {
                 try {
                     user = await newUser.save();
                 } catch (err) {
-                    let message = 'unable to save user';
+                    let message = 'unable to save user' + err;
                     throw Boom.badData(message);
                 }
                 try {
