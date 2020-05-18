@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="367px" preserveAspectRatio="none" style="width:689px;height:367px;" version="1.1" viewBox="0 0 689 367" width="689px" zoomAndPan="magnify"><defs/><g><!--MD5=[a6f11bb19cee6b13000111f5ad685e8b]
+cluster Dependencies--><path d="M25,272 L119,272 A4.5,4.5 0 0 1 122,275 L129,292.4844 L674,292.4844 A3,3 0 0 1 677,295.4844 L677,352 A3,3 0 0 1 674,355 L25,355 A3,3 0 0 1 22,352 L22,275 A3,3 0 0 1 25,272 " fill="#FFFFFF" style="stroke: #000000; stroke-width: 1.5;"/><line style="stroke: #000000; stroke-width: 1.5;" x1="22" x2="129" y1="292.4844" y2="292.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="94" x="26" y="286.0059">Dependencies</text><!--MD5=[d2021f74f0fc6f22cfddb786a037ded3]
+entity @hapi--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="56" x="399" y="305"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="394" y="310"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="394" y="329.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="36" x="409" y="327.0059">@hapi</text><!--MD5=[f2b7f961e71ac21d76e3f81e321733d1]
+entity cloudinary--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="79" x="208.5" y="305"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="203.5" y="310"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="203.5" y="329.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="59" x="218.5" y="327.0059">cloudinary</text><!--MD5=[b84d8dbe3cf51322a9824c71d57d534f]
+entity dotenv--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="59" x="135.5" y="305"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="130.5" y="310"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="130.5" y="329.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="39" x="145.5" y="327.0059">dotenv</text><!--MD5=[16dba6da759719cf44ade31a6fa742fd]
+entity handlebars--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="83" x="38.5" y="305"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="33.5" y="310"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="33.5" y="329.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="63" x="48.5" y="327.0059">handlebars</text><!--MD5=[4988c935a4d000121e8a6cae57b70207]
+entity localStorage--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="93" x="567.5" y="305"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="562.5" y="310"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="562.5" y="329.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="73" x="577.5" y="327.0059">localStorage</text><!--MD5=[e3bfa7961d47c56a847600d8be1ad6f4]
+entity mongoose--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="83" x="301.5" y="305"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="296.5" y="310"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="296.5" y="329.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="63" x="311.5" y="327.0059">mongoose</text><!--MD5=[fd8910822f7141e21bfa8d25ad529ab7]
+entity nodemailer--><rect fill="#F8F8F8" height="34.4844" rx="3" ry="3" style="stroke: #383838; stroke-width: 1.0;" width="84" x="469" y="305"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="464" y="310"/><rect fill="#F8F8F8" height="5" style="stroke: #383838; stroke-width: 1.0;" width="10" x="464" y="329.4844"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="64" x="479" y="327.0059">nodemailer</text><ellipse cx="528.1838" cy="131.242" fill="#F8F8F8" rx="41.1838" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="54" x="501.1838" y="134.9842">accounts</text><ellipse cx="446.8344" cy="76.1669" fill="#F8F8F8" rx="58.8344" ry="14.1669" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="85" x="404.3344" y="79.9091">controllers/poi</text><ellipse cx="171.9434" cy="185.1547" fill="#F8F8F8" rx="14.4434" ry="12.1547" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="14" x="164.9434" y="188.8969">db</text><ellipse cx="345.163" cy="76.242" fill="#F8F8F8" rx="29.163" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37" x="326.663" y="79.9842">gallery</text><ellipse cx="269.9975" cy="131.242" fill="#F8F8F8" rx="52.4975" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="70" x="234.9975" y="134.9842">image-store</text><ellipse cx="180.2487" cy="21.242" fill="#F8F8F8" rx="27.7487" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="35" x="162.7487" y="24.9842">index</text><ellipse cx="338.169" cy="185.242" fill="#F8F8F8" rx="49.669" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="66" x="305.169" y="188.9842">models/poi</text><ellipse cx="396.163" cy="21.242" fill="#F8F8F8" rx="29.163" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="37" x="377.663" y="24.9842">routes</text><ellipse cx="422.1777" cy="185.242" fill="#F8F8F8" rx="20.6777" ry="13.242" style="stroke: #383838; stroke-width: 0.5;"/><text fill="#000000" font-family="Tahoma, sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="25" x="409.6777" y="188.9842">user</text><!--MD5=[ed0caf0f503a47f1e4e6f611e45061b2]
+link accounts to @hapi--><path d="M525.608,144.328 C520.399,168.361 506.01,222.083 476,256 C471.251,261.367 467.147,259.013 462,264 C451.325,274.3441 442.574,288.5952 436.493,300.2597 " fill="none" id="accounts-&gt;@hapi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="434.214,304.753,441.8528,298.5362,436.476,300.2939,434.7183,294.9171,434.214,304.753" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[6ebba291860bacf026cbb877063c5c7c]
+link accounts to models/poi--><path d="M498.312,140.125 C465.186,149.191 411.525,163.877 375.518,173.732 " fill="none" id="accounts-&gt;models/poi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="370.339,175.149,380.0758,176.6305,375.1615,173.8287,377.9633,168.9144,370.339,175.149" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[4c885f55244901947b1f15f41b72867a]
+link accounts to nodemailer--><path d="M526.911,144.11 C524.084,175.533 516.488,259.99 512.911,299.7503 " fill="none" id="accounts-&gt;nodemailer" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="512.455,304.8266,517.2453,296.2212,512.903,299.8467,509.2775,295.5044,512.455,304.8266" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[2b5536fd0a96a2a37e079e26b18b3ee1]
+link accounts to user--><path d="M507.058,142.274 C488.258,151.496 460.837,164.948 442.252,174.065 " fill="none" id="accounts-&gt;user" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="437.728,176.284,447.5697,175.9097,442.2166,174.0811,444.0452,168.728,437.728,176.284" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[fc1c5e88b15a4e5d5c68e6df54759708]
+link controllers/poi to @hapi--><path d="M450.643,90.059 C455.902,110.098 465,149.716 465,184 C465,184 465,184 465,227 C465,253.775 451.584,281.9182 440.695,300.3509 " fill="none" id="controllers/poi-&gt;@hapi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="437.991,304.8212,446.0716,299.1906,440.5788,300.543,439.2264,295.0501,437.991,304.8212" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[8c9e16ea0dfcb1671b786ab11210ce19]
+link controllers/poi to image-store--><path d="M412.03,87.471 C381.524,96.606 337.424,109.811 306.479,119.077 " fill="none" id="controllers/poi-&gt;image-store" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="301.63,120.529,311.3992,121.7793,306.4199,119.0948,309.1044,114.1154,301.63,120.529" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[1addc8b37624e14f6f1fa1cebdf48e34]
+link controllers/poi to localStorage--><path d="M505.022,78.764 C537.482,82.751 576.435,92.984 602,118 C623.817,139.349 621,153.475 621,184 C621,184 621,184 621,227 C621,251.98 618.511,280.592 616.502,299.6225 " fill="none" id="controllers/poi-&gt;localStorage" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="615.95,304.7251,620.8946,296.2074,616.4877,299.7541,612.941,295.3471,615.95,304.7251" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[7f79c71a97258bc2df840f8b0550f36b]
+link controllers/poi to models/poi--><path d="M434.068,89.694 C413.918,109.475 375.101,147.58 353.488,168.796 " fill="none" id="controllers/poi-&gt;models/poi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="349.916,172.302,359.1409,168.8521,353.4842,168.7995,353.5368,163.1429,349.916,172.302" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[b0457acf79d6da3059cfa2ddbf4dc352]
+link controllers/poi to user--><path d="M443.935,90.12 C439.415,109.464 430.962,145.644 425.972,166.998 " fill="none" id="controllers/poi-&gt;user" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="424.783,172.089,430.7252,164.2347,425.9202,167.22,422.9349,162.4151,424.783,172.089" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[3af339821872acae65baab62a7793959]
+link db to dotenv--><path d="M171.427,197.048 C170.265,219.456 167.614,270.592 166.105,299.6981 " fill="none" id="db-&gt;dotenv" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="165.837,304.8646,170.2979,296.0839,166.096,299.8713,162.3086,295.6695,165.837,304.8646" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[16f6f4ce52cc9df721887e32dd3df543]
+link db to mongoose--><path d="M183.872,192.068 C206.623,204.014 257.357,232.198 294,264 C306.64,274.9699 318.913,289.2542 328.015,300.7788 " fill="none" id="db-&gt;mongoose" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="331.219,304.8886,328.839,295.3316,328.1444,300.9457,322.5303,300.251,331.219,304.8886" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[5b4a0513341801047ec9be9ed91b7327]
+link gallery to image-store--><path d="M330.182,87.471 C318.83,95.494 303.034,106.656 290.474,115.532 " fill="none" id="gallery-&gt;image-store" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="286.349,118.447,296.0073,116.5189,290.4321,115.5611,291.3899,109.9859,286.349,118.447" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[69f47554a8f1890f24fef9b4241fcbdf]
+link gallery to localStorage--><path d="M365.717,85.295 C370.665,87.048 375.971,88.745 381,90 C423.475,100.601 543.819,88.321 576,118 C598.113,138.394 591,153.919 591,184 C591,184 591,184 591,227 C591,252.646 599.178,281.1297 605.781,299.9481 " fill="none" id="gallery-&gt;localStorage" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="607.593,304.9892,608.3115,295.1666,605.901,300.2842,600.7834,297.8737,607.593,304.9892" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[9e2fbbc99427b56dfb10095808cf6a40]
+link gallery to models/poi--><path d="M344.197,89.274 C342.952,108.302 340.553,144.982 339.132,166.692 " fill="none" id="gallery-&gt;models/poi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="338.794,171.869,343.3744,163.15,339.1212,166.8797,335.3915,162.6265,338.794,171.869" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[9c7e1f50e930d4813640b46e868b495b]
+link gallery to user--><path d="M353.535,88.86 C367.557,108.346 395.46,147.12 410.965,168.665 " fill="none" id="gallery-&gt;user" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="413.893,172.734,411.8816,163.0927,410.972,168.676,405.3887,167.7664,413.893,172.734" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[36bf16b6ed73e96d63e219fde055935a]
+link image-store to cloudinary--><path d="M268.59,144.11 C264.933,175.533 255.102,259.99 250.474,299.7503 " fill="none" id="image-store-&gt;cloudinary" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="249.883,304.8266,254.897,296.3496,250.4612,299.8601,246.9506,295.4244,249.883,304.8266" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[a7cd37e1dcfb34fb25f913337e38348f]
+link image-store to models/poi--><path d="M285.091,143.54 C295.04,151.148 308.155,161.177 318.838,169.347 " fill="none" id="image-store-&gt;models/poi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="322.951,172.492,318.2303,163.8482,318.9788,169.4553,313.3716,170.2038,322.951,172.492" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[7c586a3c0b382ef6137c4e9033d355dd]
+link <b>index</b> to @hapi--><path d="M180.36,34.135 C181.58,57.337 186.901,108.808 210,144 C262.962,224.689 321.975,196.537 391,264 C401.715,274.4722 410.715,288.7233 417.037,300.3558 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;@hapi" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="419.41,304.8348,418.7293,295.0095,417.0684,300.417,411.6609,298.7561,419.41,304.8348" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[4ef995c05e45f6b9da1dbee41f7d80db]
+link <b>index</b> to db--><path d="M179.399,34.176 C177.977,62.974 174.406,135.284 172.802,167.762 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;db" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="172.544,172.983,176.9839,164.1917,172.7911,167.9891,168.9937,163.7963,172.544,172.983" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[191a5796bff3c6286685e0c5b7c67f4b]
+link <b>index</b> to dotenv--><path d="M171.536,33.642 C158.5,52.755 135,92.422 135,130 C135,130 135,130 135,227 C135,253.215 145.72,281.6782 154.344,300.3343 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;dotenv" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="156.483,304.8587,156.2514,295.0126,154.3454,300.3387,149.0193,298.4327,156.483,304.8587" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[045467efcef96cffe3eb4d34c2a17632]
+link <b>index</b> to handlebars--><path d="M164.41,31.854 C139.871,48.717 95,85.619 95,130 C95,130 95,130 95,227 C95,252.227 89.6667,280.7908 85.3604,299.7429 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;handlebars" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="84.1783,304.8227,90.1141,296.9636,85.3116,299.9528,82.3223,295.1503,84.1783,304.8227" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[13ea7682f7c7455146fd4e6b14d4fbe4]
+link <b>index</b> to image-store--><path d="M189.632,33.558 C205.854,53.024 238.641,92.37 256.927,114.312 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;image-store" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="260.165,118.198,257.4759,108.7234,256.9639,114.357,251.3303,113.8451,260.165,118.198" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[fd138d533853b6a9e7a6e87d4aed7c8c]
+link <b>index</b> to routes--><path d="M207.844,21 C259.124,21 310.404,21 361.685,21 " fill="none" id="&lt;b&gt;index&lt;/b&gt;-&gt;routes" style="stroke: #000000; stroke-width: 1.0;"/><polygon fill="#000000" points="366.968,21,357.968,17,361.968,21,357.968,25,366.968,21" style="stroke: #000000; stroke-width: 1.0;"/><!--MD5=[0ecd5f431d8cd18806b842ef3d4c8c1b]
+link models/poi to @hapi--><path d="M346.389,198.075 C356.946,213.333 375.566,240.446 391,264 C398.858,275.9924 407.439,289.5594 414.252,300.4481 " fill="none" id="models/poi-&gt;@hapi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="417.056,304.9383,415.6818,295.1858,414.4077,300.6973,408.8962,299.4231,417.056,304.9383" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[16d8d3db6ce5d22d78df9c8eead23a86]
+link models/poi to mongoose--><path d="M338.461,198.458 C339.317,221.564 341.159,271.2912 342.214,299.7874 " fill="none" id="models/poi-&gt;mongoose" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="342.402,304.8499,346.0659,295.7079,342.2168,299.8533,338.0714,296.0042,342.402,304.8499" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[bd5a6e4b2eb8f707de784888527d1d02]
+link routes to accounts--><path d="M424.375,23.978 C451.13,27.399 490.401,36.708 513,62 C525.34,75.81 528.282,97.441 528.656,112.588 " fill="none" id="routes-&gt;accounts" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="528.69,117.849,532.6334,108.824,528.6586,112.8491,524.6335,108.8743,528.69,117.849" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[e13b4ba963a4b07e74c6e4f435da94d1]
+link routes to controllers/poi--><path d="M406.816,33.24 C413.852,40.552 423.15,50.214 431.03,58.403 " fill="none" id="routes-&gt;controllers/poi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="434.768,62.288,431.4095,53.0295,431.301,58.6853,425.6452,58.5767,434.768,62.288" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[cbce44564a1c5e856c10968ea21e2463]
+link routes to gallery--><path d="M385.184,33.24 C377.746,40.969 367.78,51.326 359.634,59.792 " fill="none" id="routes-&gt;gallery" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="355.8,63.776,364.9228,60.0647,359.267,60.1733,359.1585,54.5175,355.8,63.776" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[4d1349761499a64be8ee4f07ffa15f12]
+link user to @hapi--><path d="M422.461,198.458 C423.317,221.564 425.159,271.2912 426.214,299.7874 " fill="none" id="user-&gt;@hapi" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="426.402,304.8499,430.0659,295.7079,426.2168,299.8533,422.0714,296.0042,426.402,304.8499" style="stroke: #000000; stroke-width: 0.5;"/><!--MD5=[fa798d6e487f73c54c66aa80b75a1a19]
+link user to mongoose--><path d="M415.265,197.51 C401.947,220.268 372.081,271.3041 355.21,300.1356 " fill="none" id="user-&gt;mongoose" style="stroke: #000000; stroke-width: 0.5;"/><polygon fill="#000000" points="352.618,304.5645,360.6157,298.8167,355.1432,300.249,353.7109,294.7765,352.618,304.5645" style="stroke: #000000; stroke-width: 0.5;"/><script type="text/plantuml"><![CDATA[MD5=[71f64e40f074590393008003967a00fb]
+@startuml
+
+scale max 1920 width
+top to bottom direction
+
+skinparam nodesep 14
+skinparam ranksep 28
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Tahoma
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam dpi 150
+skinparam arrowColor black
+skinparam arrowThickness 0.5
+skinparam packageTitleAlignment left
+
+skinparam usecase {
+  borderThickness 0.5
+}
+
+skinparam rectangle {
+  borderThickness 0.5
+}
+
+skinparam component {
+  borderThickness 1
+}
+
+
+(accounts)
+(controllers/poi)
+(db)
+(gallery)
+(image-store)
+(<b>index</b>)
+(models/poi)
+(routes)
+(user)
+
+package "Dependencies" {
+  [@hapi]
+  [cloudinary]
+  [dotenv]
+  [handlebars]
+  [localStorage]
+  [mongoose]
+  [nodemailer]
+}
+
+(accounts) ----> [@hapi]
+(accounts) --> (models/poi)
+(accounts) ----> [nodemailer]
+(accounts) --> (user)
+(controllers/poi) ----> [@hapi]
+(controllers/poi) --> (image-store)
+(controllers/poi) ----> [localStorage]
+(controllers/poi) --> (models/poi)
+(controllers/poi) --> (user)
+(db) ----> [dotenv]
+(db) ----> [mongoose]
+(gallery) --> (image-store)
+(gallery) ----> [localStorage]
+(gallery) --> (models/poi)
+(gallery) --> (user)
+(image-store) ----> [cloudinary]
+(image-store) --> (models/poi)
+(<b>index</b>) --[thickness=1]> [@hapi]
+(<b>index</b>) --[thickness=1]> (db)
+(<b>index</b>) --[thickness=1]> [dotenv]
+(<b>index</b>) --[thickness=1]> [handlebars]
+(<b>index</b>) --[thickness=1]> (image-store)
+(<b>index</b>) -[thickness=1]> (routes)
+(models/poi) ----> [@hapi]
+(models/poi) ----> [mongoose]
+(routes) --> (accounts)
+(routes) --> (controllers/poi)
+(routes) --> (gallery)
+(user) ----> [@hapi]
+(user) ----> [mongoose]
+
+@enduml
+
+
+' View and edit on https://arkit.pro
+]]></script></g></svg>
