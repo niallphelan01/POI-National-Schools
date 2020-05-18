@@ -124,18 +124,23 @@ const Accounts = {
                     const message = 'Email address is not registered';
                     throw Boom.unauthorized(message);
                 }
-                user.comparePassword(password);
-                request.cookieAuth.set({ id: user.id });
-                if (user.level ==="superAdmin") {
-                    return h.redirect('/superAdminHome');
+                if (!await user.comparePassword(password)) {         // EDITED (next few lines)
+                    const message = 'Password mismatch';
+                    throw Boom.unauthorized(message);
                 }
-                else if(user.level ==="admin"){
-                    return h.redirect('/adminHome');
+                    request.cookieAuth.set({ id: user.id });
+                    if (user.level ==="superAdmin") {
+                        return h.redirect('/superAdminHome');
+                    }
+                    else if(user.level ==="admin"){
+                        return h.redirect('/adminHome');
+                    }
+                    else{
+                        return h.redirect('/home');
+                    }
                 }
-                else{
-                    return h.redirect('/home');
-                }
-            } catch (err) {
+
+             catch (err) {
                 return h.view('login', { errors: [{ message: err.message }] });
             }
         }
@@ -181,7 +186,7 @@ const Accounts = {
                     firstName: payload.firstName,
                     lastName: payload.lastName,
                     email: payload.email,
-                    password: payload.password,
+                    password: hash,
                     level: level
                 });
                 try {
@@ -238,7 +243,8 @@ const Accounts = {
             user.firstName = payload.firstName;
             user.lastName = payload.lastName;
             user.email = payload.email;
-            user.password = payload.password;
+            const hash = await bcrypt.hash(payload.password, saltRounds); //updated to add hash via salt
+            user.password = hash;
             await user.save();
             return h.redirect('/home');
         }catch (err){
