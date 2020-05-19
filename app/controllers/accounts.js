@@ -6,6 +6,8 @@ const nodemailer = require('nodemailer');
 const Poi = require('../models/poi');
 
 const Joi = require('@hapi/joi');
+const bcrypt = require('bcrypt');          // ADDED
+const saltRounds = 10;
 
 //TODO rationalise the validations further as they a currently very simplified
 const schema = Joi.object({
@@ -122,18 +124,23 @@ const Accounts = {
                     const message = 'Email address is not registered';
                     throw Boom.unauthorized(message);
                 }
-                user.comparePassword(password);
-                request.cookieAuth.set({ id: user.id });
-                if (user.level ==="superAdmin") {
-                    return h.redirect('/superAdminHome');
+                if (!await user.comparePassword(password)) {         // EDITED (next few lines)
+                    const message = 'Password mismatch';
+                    throw Boom.unauthorized(message);
                 }
-                else if(user.level ==="admin"){
-                    return h.redirect('/adminHome');
+                    request.cookieAuth.set({ id: user.id });
+                    if (user.level ==="superAdmin") {
+                        return h.redirect('/superAdminHome');
+                    }
+                    else if(user.level ==="admin"){
+                        return h.redirect('/adminHome');
+                    }
+                    else{
+                        return h.redirect('/home');
+                    }
                 }
-                else{
-                    return h.redirect('/home');
-                }
-            } catch (err) {
+
+             catch (err) {
                 return h.view('login', { errors: [{ message: err.message }] });
             }
         }
@@ -168,23 +175,24 @@ const Accounts = {
                     email: payload.email
                 });
                 //test the fields against the validation information above
+                const hash = await bcrypt.hash(payload.password, saltRounds);    // ADDED
                 console.log("Validation tests completed successfully")
                 let user = await User.findByEmail(payload.email);
                 if (user) {
                     let message = 'Email address is already registered';
                     throw Boom.badData(message);
                 }
-                const newUser = new User({
+                    const newUser = new User({
                     firstName: payload.firstName,
                     lastName: payload.lastName,
                     email: payload.email,
-                    password: payload.password,
+                    password: hash,
                     level: level
                 });
                 try {
                     user = await newUser.save();
                 } catch (err) {
-                    let message = 'unable to save user';
+                    let message = 'unable to save user' + err;
                     throw Boom.badData(message);
                 }
                 try {
@@ -235,7 +243,8 @@ const Accounts = {
             user.firstName = payload.firstName;
             user.lastName = payload.lastName;
             user.email = payload.email;
-            user.password = payload.password;
+            const hash = await bcrypt.hash(payload.password, saltRounds); //updated to add hash via salt
+            user.password = hash;
             await user.save();
             return h.redirect('/home');
         }catch (err){
