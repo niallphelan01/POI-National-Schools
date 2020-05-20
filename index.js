@@ -2,6 +2,7 @@
 const ImageStore = require('./app/utils/image-store');
 const Hapi = require('@hapi/hapi');
 const dotenv = require('dotenv');
+const fs = require('fs');
 
 const result = dotenv.config();
 if (result.error) {

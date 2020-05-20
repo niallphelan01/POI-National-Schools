@@ -12,8 +12,8 @@ const saltRounds = 10;
 //TODO rationalise the validations further as they a currently very simplified
 const schema = Joi.object({
     firstName: Joi.string()
-        .alphanum()
-        .min(3)
+      .alphanum()
+       .min(3)
         .max(30)
         .required(),
     lastName: Joi.string()
@@ -174,7 +174,6 @@ const Accounts = {
                     password: payload.password,
                     email: payload.email
                 });
-                //test the fields against the validation information above
                 const hash = await bcrypt.hash(payload.password, saltRounds);    // ADDED
                 console.log("Validation tests completed successfully")
                 let user = await User.findByEmail(payload.email);
