@@ -2,6 +2,7 @@
 const ImageStore = require('./app/utils/image-store');
 const Hapi = require('@hapi/hapi');
 const dotenv = require('dotenv');
+const fs = require('fs');
 
 const result = dotenv.config();
 if (result.error) {
@@ -19,8 +20,12 @@ const credentials = {
 const os = require("os");
 
 const server = Hapi.server({
-    port: process.env.PORT || 3000
-   // host: 'localhost'
+    port: process.env.PORT || 3000,
+    tls:{
+        key: fs.readFileSync('webserver.key'),
+        cert: fs.readFileSync('webserver_self.crt')
+
+    }
 });
 
 require('./app/models/db');  //required to run mongodb
