@@ -37,6 +37,8 @@
     "util": "^0.12.3"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
     "prettier": "^1.19.1"
   },
   "prettier": {
