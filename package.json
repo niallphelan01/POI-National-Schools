@@ -30,6 +30,7 @@
     "fs": "0.0.1-security",
     "handlebars": "^4.7.6",
     "localStorage": "^1.0.4",
+    "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^5.9.11",
     "node-localstorage": "^2.1.6",
     "nodemailer": "^6.4.6",
