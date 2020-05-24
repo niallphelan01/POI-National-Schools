@@ -30,6 +30,8 @@
     "fs": "0.0.1-security",
     "handlebars": "^4.7.6",
     "localStorage": "^1.0.4",
+    "lodash": "^4.17.15",
+    "mais-mongoose-seeder": "^1.0.7",
     "mongoose": "^5.9.11",
     "node-localstorage": "^2.1.6",
     "nodemailer": "^6.4.6",
@@ -37,6 +39,9 @@
     "util": "^0.12.3"
   },
   "devDependencies": {
+    "axios": "^0.19.2",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
     "prettier": "^1.19.1"
   },
   "prettier": {
