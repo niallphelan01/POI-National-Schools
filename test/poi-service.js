@@ -36,6 +36,31 @@ class PoiService {
     const response = await axios.delete(this.baseUrl + '/api/users/' + id);
     return response.data;
   }
+  async createPoi(id, poi) {
+    try {
+      const response = await axios.post(this.baseUrl + '/api/users/' + id + '/pois', poi);
+      return response.data;
+    } catch (e) {
+      console.log(e)
+      return null;
+    }
+  }
+  async getPois(id) {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/users/' + id + '/pois');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async deleteAllPois() {
+    try {
+      const response = await axios.delete(this.baseUrl + '/api/pois');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
 
 }
 

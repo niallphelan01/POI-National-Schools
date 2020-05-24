@@ -3,6 +3,7 @@
 const assert = require('chai').assert;
 const axios = require('axios');
 
+
 suite('User API tests', function () {
 
 
@@ -51,7 +52,9 @@ suite('User API tests', function () {
     };
 
     const response = await axios.post(usersUrl, newUser);
+    console.log(usersUrl)
     const returnedUser = response.data;
+    console.log(returnedUser);
     assert.equal(201, response.status);
 
     assert.equal(returnedUser.firstName, 'Barnie');
@@ -60,6 +63,48 @@ suite('User API tests', function () {
     assert.equal(returnedUser.password, 'test');
   });
 
+ test('create a new poi', async function(){
+    const usersUrl = 'http://localhost:3000/api/users';
+    const newUser = {
+      firstName: 'Barnie',
+      lastName: 'Grumble',
+      email: 'bgrumble@test.com',
+      password: 'test'
+    };
+
+   const response = await axios.post(usersUrl, newUser);
+
+   // console.log(response)
+    const returnedUser = response.data;
+    const newPoi = {
+        AIRO_ID : '37',
+        Roll_No : '19477J',
+        Off_Name : 'HOLY FAMILY B N S',
+        Add_1 : 'ASKEA',
+        Add_2 : 'CARLOW',
+        Add_3 : 'CO CARLOW',
+        Add_4 : '',
+        County : 'Carlow',
+        Ethos : 'CATHOLIC',
+        Island : 'N',
+        DEIS : 'Y',
+        Gaeltacht : 'N',
+        M_13_14 : '385',
+        F_13_14 : '0',
+        T_13_14 : '385',
+        xcoord : '273297',
+        ycoord : '176670',
+        Long : '-6.91224',
+        Lat : '52.836'
+    };
+    const poisUrl = "http://localhost:3000/api/users/" + returnedUser._id +"/pois";
+   // console.log(poisUrl);
+   // console.log(newPoi);
+    const responsePoi = await axios.post(poisUrl, newPoi);
+    console.log(responsePoi);
+  })
+
+/*
   test('delete a user', async function() {
     let response = await axios.get('http://localhost:3000/api/users');
     let users = response.data;
@@ -87,7 +132,7 @@ suite('User API tests', function () {
     users = response.data;
     assert.equal(users.length, 0);
   });
- 
-
+  
+*/
 
 });

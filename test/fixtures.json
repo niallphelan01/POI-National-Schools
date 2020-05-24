@@ -108,6 +108,29 @@
     "lastName" : "user",
     "email": "test@test.com",
     "password" : "test",
-    "level": "basic"
+    "level": "admin"
+  },
+  "newPoi":
+  {
+    "AIRO_ID" : "22",
+    "Roll_No" : "17501Q",
+    "Off_Name" : "Bennekerry National School",
+    "Add_1" : "Bennekerry",
+    "Add_2" : "Co Carlow",
+    "Add_3" : "",
+    "Add_4" : "",
+    "County" : "Carlow",
+    "Ethos" : "CATHOLIC",
+    "Island" : "N",
+    "DEIS" : "N",
+    "Gaeltacht" : "N",
+    "M_13_14" : "200",
+    "F_13_14" : "199",
+    "T_13_14" : "399",
+    "xcoord" : "276212",
+    "ycoord" : "176121",
+    "Long" : "-6.86912",
+    "Lat" : "52.8307",
+    "Region": "east"
   }
 }

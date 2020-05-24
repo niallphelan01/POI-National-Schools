@@ -2,7 +2,7 @@
 
 const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
-const Boom = require('@hapi/boom');
+//const Boom = require('@hapi/boom');
 
 const poiSchema = new Schema({
     AIRO_ID: Number,
@@ -26,13 +26,12 @@ const poiSchema = new Schema({
     Lat: Number,
     dateUpdated: String,
     userUpdated: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-
+            type: Schema.Types.ObjectId,
+            ref: 'User'
     },
-    cloudinary_public_id: String,
-    cloudinary_secure_url: String,
-    Region: String
+   cloudinary_public_id: String,
+   cloudinary_secure_url: String,
+   Region: String
 });
 
 poiSchema.statics.findByRegion= function(region) {

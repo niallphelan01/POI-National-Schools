@@ -26,7 +26,6 @@
   "pois": {
     "_model": "Poi",
     "1": {
-      "_id": "5e61773700f1a931fea452ac",
       "AIRO_ID": "7",
       "Roll_No": "04077I",
       "Off_Name": "SCOIL NAIS BHRIDE",
@@ -53,7 +52,6 @@
       "Region": "east"
       },
     "2": {
-      "_id" : "5e61773700f1a931fea452d4",
       "AIRO_ID" : "47",
       "Roll_No" : "08453H",
       "Off_Name" : "S N CRUABANAI",
@@ -80,7 +78,6 @@
       "Region": "east"
       },
     "3":{
-      "_id" : "5e61773700f1a931fea452ba",
       "AIRO_ID" : "21",
       "Roll_No" : "17481N",
       "Off_Name" : "ST BRENDANS N S",
@@ -101,6 +98,6 @@
       "Long" : "-6.90043",
       "Lat" : "52.4724",
       "Region": "east"
-    }
-    }
+     }
+  }
 }
