@@ -8,7 +8,7 @@ const poiSchema = new Schema({
     AIRO_ID: Number,
     Roll_No: String,
     Off_Name: String,
-    Add1_1: String,
+    Add_1: String,
     Add_2: String,
     Add_3: String,
     Add_4: String,

@@ -25,8 +25,8 @@ userSchema.statics.findByEmail = function(email) {
 //    return this;
 //};
 
-userSchema.methods.comparePassword = async function(candidatePassword) {        // EDITED
-    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+userSchema.methods.comparePassword = async function(userPassword) {        // EDITED
+    const isMatch = await bcrypt.compare(userPassword, this.password);
     return isMatch;
 };
 
