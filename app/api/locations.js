@@ -2,7 +2,7 @@
 
 const Location = require('../models/location');
 const Boom = require('@hapi/boom');
-//const User = require('../models/user');
+
 
 const Locations = {
   findAll: {
