@@ -104,8 +104,7 @@ suite('User API tests', function () {
     console.log(responsePoi);
   })
 
-/*
-  test('delete a user', async function() {
+ /* test('delete a user', async function() {
     let response = await axios.get('http://localhost:3000/api/users');
     let users = response.data;
     const originalSize = users.length;
@@ -132,7 +131,6 @@ suite('User API tests', function () {
     users = response.data;
     assert.equal(users.length, 0);
   });
-  
 */
 
 });

@@ -8,7 +8,7 @@ const poiSchema = new Schema({
     AIRO_ID: Number,
     Roll_No: String,
     Off_Name: String,
-    Add1_1: String,
+    Add_1: String,
     Add_2: String,
     Add_3: String,
     Add_4: String,
@@ -22,12 +22,16 @@ const poiSchema = new Schema({
     T_13_14: Number,
     xcoord: Number,
     ycoord: Number,
-    Long: Number,
-    Lat: Number,
+    //Long: Number,
+    //Lat: Number,
     dateUpdated: String,
     userUpdated: {
             type: Schema.Types.ObjectId,
             ref: 'User'
+    },
+    location: {
+        type: Schema.Types.ObjectId,
+        ref: 'Location'
     },
    cloudinary_public_id: String,
    cloudinary_secure_url: String,
