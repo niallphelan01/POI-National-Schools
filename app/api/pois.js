@@ -4,12 +4,18 @@ const Poi = require('../models/poi');
 const Boom = require('@hapi/boom');
 const User = require('../models/user');
 
+
 const Pois = {
   findAll:{
     auth: false,
     handler: async function (request, h) {
-      const pois = await Poi.find();
-      return pois;
+        try {
+            const pois = await Poi.find().populate('location').lean();
+            return pois;
+        } catch (err) {
+            return Boom.badImplementation('error fetching ');
+        }
+
     }
   },
   findByUsersUpdated: {
