@@ -25,7 +25,6 @@ const server = Hapi.server({
         key: fs.readFileSync('webserver.key'),
         cert: fs.readFileSync('webserver_self.crt')
     }
-
     */
 
     routes: { cors: true }
