@@ -1,6 +1,6 @@
 {
   "Location": {
-    "_model": "location",
+    "_model": "Location",
     "first": {
       "lng": "-6.78127",
       "lat": "52.8373"

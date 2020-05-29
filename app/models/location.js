@@ -10,4 +10,4 @@ const locationSchema = new Schema({
   lat: Number,
 });
 
-module.exports = Mongoose.model('location', locationSchema);
+module.exports = Mongoose.model('Location', locationSchema);
