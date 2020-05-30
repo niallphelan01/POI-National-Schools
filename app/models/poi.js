@@ -4,6 +4,9 @@ const Mongoose = require('mongoose');
 const Schema = Mongoose.Schema;
 //const Boom = require('@hapi/boom');
 
+
+//TODO: Add additonal feature to allow for multiple images
+
 const poiSchema = new Schema({
     AIRO_ID: Number,
     Roll_No: String,
