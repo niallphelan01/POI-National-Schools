@@ -6,17 +6,16 @@ const User = require('../models/user');
 
 
 const Pois = {
-  findAll:{
-    auth: false,
-    handler: async function (request, h) {
-        try {
-            const pois = await Poi.find().populate('location').lean();
-            return pois;
-        } catch (err) {
-            return Boom.badImplementation('error fetching ');
-        }
-
-    }
+  findAll: {
+      auth: false,
+      handler: async function (request, h) {
+          try {
+              const pois = await Poi.find().populate('location').find();
+              return pois;
+          } catch (err) {
+              return Boom.badImplementation('error fetching ');
+          }
+      }
   },
   findByUsersUpdated: {
     auth: false,
