@@ -25,26 +25,33 @@ const Pois = {
   }
  },
   createPoi:{
-    auth: false,
-    handler: async function(request, h) {
-      let poi = new Poi(request.payload);
-      const user = await User.findOne({ _id: request.params.id });
-      if (!user) {
-      return Boom.notFound('No User with this id');
-      }
-      poi.userUpdated = user._id;
-      let poiResponse;
-      poiResponse = await poi.save();
-      return poiResponse;
-    }
-  },
+        auth: false,
+        handler: async function(request, h) {
+            let poi = new Poi(request.payload);
+            const user = await User.findOne({ _id: request.params.id });
+            if (!user) {
+                return Boom.notFound('No User with this id');
+            }
+            poi.userUpdated = user._id;
+            let poiResponse;
+            poiResponse = await poi.save();
+            return poiResponse;
+        }
+    },
   deleteAll: {
     auth: false,
     handler: async function(request, h) {
       await Poi.deleteMany({});
       return { success: true };
     }
-  }
+  },
+    deleteOne: {
+        auth: false,
+        handler: async function(request, h) {
+            await Poi.deleteOne({_id: request.params.id });
+            return { success: true };
+        }
+    }
 
 };
 
