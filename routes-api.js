@@ -14,6 +14,7 @@ module.exports = [
   { method: 'POST', path: '/api/users/{id}/pois', config: Pois.createPoi},
   { method: 'DELETE', path: '/api/pois', config: Pois.deleteAll},
   { method: 'DELETE', path: '/api/pois/{id}', config: Pois.deleteOne},
+  { method: 'PUT', path: '/api/pois/{id}', config: Pois.updateOne},
 
   { method: 'GET', path: '/api/locations', config: Locations.findAll }, //lists out all locations
   { method: 'Post', path: '/api/locations', config: Locations.createLocation }, //lists out all locations
