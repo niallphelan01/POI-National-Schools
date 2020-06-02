@@ -64,7 +64,7 @@ const Pois = {
             const newPoi = request.payload;
             console.log("New Poi object")
             console.log(newPoi);
-
+            poiData.AIRO_ID = newPoi.AIRO_ID;
             poiData.Roll_No = newPoi.Roll_No;
             poiData.Off_Name = newPoi.Off_Name;
             poiData.County = newPoi.County;
@@ -90,7 +90,7 @@ const Pois = {
 
 
 
-            console.log("The altered Poi to be saved")
+
            try{
                let poiResponse = await poiData.save();
                return poiResponse;

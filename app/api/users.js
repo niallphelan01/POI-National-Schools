@@ -54,8 +54,30 @@ const Users = {
       }
       return Boom.notFound('id not found');
     }
-  }
+  },
+  updateOne: {
+    auth: false,
+    handler: async function (request, h) {
+      var userData = await User.findById(request.params.id);
+      console.log("User object")
+      console.log(userData);
+      const newUser = request.payload;
+      console.log("New User object")
+      console.log(newUser);
+      userData.firstName = newUser.firstName;
+      userData.lastName = newUser.lastName;
+      userData.email = newUser.email;
+      userData.password = newUser.password;
 
+
+      try {
+        let userResponse = await userData.save();
+        return userResponse;
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 };
 
 module.exports = Users;
