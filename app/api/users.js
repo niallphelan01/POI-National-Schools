@@ -100,6 +100,7 @@ const Users = {
       userData.lastName = newUser.lastName;
       userData.email = newUser.email;
       userData.password = newUser.password;
+      userData.level = newUser.level;
 
 
       try {
