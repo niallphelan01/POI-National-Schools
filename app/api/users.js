@@ -2,6 +2,26 @@
 const Boom = require('@hapi/boom'); // required to give the response of not found etc
 
 const User = require('../models/user');
+const Joi = require('@hapi/joi');
+const schema = Joi.object({
+  firstName: Joi.string()
+      .alphanum()
+      .min(3)
+      .max(30)
+      .required(),
+  lastName: Joi.string()
+      .alphanum()
+      .min(3)
+      .max(30)
+      .required(),
+  password: Joi.string()
+      .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+      .required(),
+  email: Joi.string()
+      .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net','ie','co.uk'] } })
+      .required()
+
+});
 
 const Users = {
   find: {
@@ -29,11 +49,23 @@ const Users = {
     auth: false,
     handler: async function(request, h) {
       const newUser = new User(request.payload);
-      const user = await newUser.save();
-      if (user) {
-        return h.response(user).code(201);
+      try {
+        const level = "basic"; //initial user level
+        const value = await schema.validateAsync({
+          firstName: newUser.firstName,
+          lastName: newUser.lastName,
+          password: newUser.password,
+          email: newUser.email
+        });
+        const user = await newUser.save();
+        if (user) {
+          return h.response(user).code(201);
+        }
       }
-      return Boom.badImplementation('error creating user');
+      catch(e){
+        return Boom.badImplementation('error creating user' + e);
+      }
+
     }
   },
 

@@ -6,6 +6,8 @@ const Boom = require('@hapi/boom');
 const User = require('../models/user');
 
 
+
+
 const Pois = {
   findAll: {
       auth: false,
