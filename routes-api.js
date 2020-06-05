@@ -19,6 +19,8 @@ module.exports = [
   { method: 'PUT', path: '/api/pois/{id}', config: Pois.updateOne},
 
   { method: 'GET', path: '/api/locations', config: Locations.findAll }, //lists out all locations
-  { method: 'Post', path: '/api/locations', config: Locations.createLocation }, //lists out all locations
+  { method: 'POST', path: '/api/locations', config: Locations.createLocation }, //lists out all locations
+  { method: 'DELETE', path: '/api/locations', config: Locations.deleteAll }, //delete all locations
+
 
 ];

@@ -12,6 +12,13 @@ const Locations = {
       return location;
     }
   },
+  deleteAll: {
+    auth: false,
+    handler: async function(request, h) {
+      await Locations.deleteMany({});
+      return { success: true };
+    }
+  },
 createLocation:{
   auth: false,
       handler: async function(request, h) {
