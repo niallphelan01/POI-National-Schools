@@ -121,7 +121,6 @@ const Users = {
       console.log("New User object")
       console.log(newUser);
       const hash = await bcrypt.hash(newUser.password, saltRounds); //hash the password
-
       userData.firstName = newUser.firstName;
       userData.lastName = newUser.lastName;
       userData.email = newUser.email;
