@@ -11,11 +11,13 @@ const User = require('../models/user');
 const Pois = {
   findAll: {
       auth:
-          false,
+          {strategy:'jwt'},
       handler: async function (request, h) {
           try {
               const pois = await Poi.find().populate('location').find();
-              //pois.type('application/xml');
+              if (!pois) {
+                  return Boom.notFound('No Poi with this id');  //error for same lenght but incorrect id error
+              }
               return pois;
           } catch (err) {
               return Boom.badImplementation('error fetching ');
@@ -24,14 +26,22 @@ const Pois = {
       }
   },
     findByPoiId:{
-        auth: false,
+        auth: {strategy:'jwt'},
         handler: async function(request, h) {
-            const pois = await Poi.find({ _id: request.params.id });
-            return pois;
+           try{
+               const pois = await Poi.findOne({ _id: request.params.id });
+               if (!pois) {
+                   return Boom.notFound('No Poi with this id');  //error for same lenght but incorrect id error
+               }
+               return pois;
+           }
+           catch (err) {
+            return Boom.notFound('No Poi with this id');  //error for any length but incorrect id error
+           }
         }
     },
   findByUsersUpdated: {
-    auth: false,
+    auth: {strategy:'jwt'},
       handler: async function(request, h) {
      const pois = await Poi.find({ userUpdated: request.params.id });
      return pois;
@@ -52,21 +62,21 @@ const Pois = {
         }
     },
   deleteAll: {
-    auth: false,
+    auth: {strategy:'jwt'},
     handler: async function(request, h) {
       await Poi.deleteMany({});
       return { success: true };
     }
   },
     deleteOne: {
-        auth: false,
+        auth: {strategy:'jwt'},
         handler: async function(request, h) {
             await Poi.deleteOne({_id: request.params.id });
             return { success: true };
         }
     },
     updateOne:{
-      auth:false,
+      auth:{strategy:'jwt'},
         handler: async function(request, h) {
            // let poiId = request.params;
             var poiData = await Poi.findById(request.params.id);

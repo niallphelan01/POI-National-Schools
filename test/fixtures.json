@@ -132,5 +132,26 @@
     "Long" : "-6.86912",
     "Lat" : "52.8307",
     "Region": "east"
+  },
+  "invalidPoi":
+  {
+    "Roll_No" : "17501Q",
+    "Off_Name" : "Bennekerry National School",
+    "Add_2" : "Co Carlow",
+    "Add_3" : "",
+    "Add_4" : "",
+    "County" : "Carlow",
+    "Ethos" : "CATHOLIC",
+    "Island" : "N",
+    "DEIS" : "N",
+    "Gaeltacht" : "N",
+    "M_13_14" : "abc",
+    "F_13_14" : "abd",
+    "T_13_14" : "399",
+    "xcoord" : "276212",
+    "ycoord" : "176121",
+    "Long" : "-6.86912",
+    "Lat" : "52.8307",
+    "Region": "east"
   }
 }
