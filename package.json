@@ -29,6 +29,8 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "handlebars": "^4.7.6",
+    "hapi-auth-jwt2": "^10.1.0",
+    "jsonwebtoken": "^8.5.1",
     "localStorage": "^1.0.4",
     "lodash": "^4.17.15",
     "mais-mongoose-seeder": "^1.0.7",
@@ -41,6 +43,7 @@
   "devDependencies": {
     "axios": "^0.19.2",
     "chai": "^4.2.0",
+    "chai-exclude": "^2.0.2",
     "mocha": "^7.1.2",
     "prettier": "^1.19.1"
   },

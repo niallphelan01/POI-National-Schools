@@ -109,6 +109,10 @@
       "xcoord": "274710",
       "ycoord": "136225",
       "location": "->Location.third",
+      "cloudinary_public_id": "",
+      "cloudinary_secure_url": "",
+      "dateUpdated": "23-5-2020",
+      "userUpdated": "->users.admin",
       "Region": "east"
     }
   }
