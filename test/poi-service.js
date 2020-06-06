@@ -45,6 +45,14 @@ class PoiService {
       return null;
     }
   }
+  async getPoisbyId(id) {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/pois/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
   async getPois(id) {
     try {
       const response = await axios.get(this.baseUrl + '/api/users/' + id + '/pois');
@@ -53,9 +61,25 @@ class PoiService {
       return null;
     }
   }
+  async getAllPois() {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/pois');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
   async deleteAllPois() {
     try {
       const response = await axios.delete(this.baseUrl + '/api/pois');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async deleteOnePoi(id) {
+    try {
+      const response = await axios.delete(this.baseUrl + '/api/pois/' + id);
       return response.data;
     } catch (e) {
       return null;

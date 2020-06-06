@@ -10,9 +10,8 @@ const User = require('../models/user');
 
 const Pois = {
   findAll: {
-      auth: {
-          strategy: 'jwt',
-      },
+      auth:
+          false,
       handler: async function (request, h) {
           try {
               const pois = await Poi.find().populate('location').find();
@@ -21,17 +20,25 @@ const Pois = {
           } catch (err) {
               return Boom.badImplementation('error fetching ');
           }
+
       }
   },
+    findByPoiId:{
+        auth: false,
+        handler: async function(request, h) {
+            const pois = await Poi.find({ _id: request.params.id });
+            return pois;
+        }
+    },
   findByUsersUpdated: {
     auth: false,
-    handler: async function(request, h) {
+      handler: async function(request, h) {
      const pois = await Poi.find({ userUpdated: request.params.id });
      return pois;
   }
  },
   createPoi:{
-        auth: false,
+        auth: {strategy:'jwt'},
         handler: async function(request, h) {
             let poi = new Poi(request.payload);
             const user = await User.findOne({ _id: request.params.id });

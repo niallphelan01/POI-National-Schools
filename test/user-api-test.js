@@ -18,21 +18,12 @@ suite('Users API tests', function () {
     //const response = await poiService.authenticate(newUser);
   });
 
-  /*setup(async function () {
-    await poiService.deleteAllUsers(); //setup for populating the system
-    await poiService.deleteAllPois();
-  });
-   */
+
   suiteTeardown(async function() {
     await poiService.deleteAllUsers();
     poiService.clearAuth();
   });
-  /*
-  teardown(async function () {
-    await poiService.deleteAllUsers();
-    await poiService.deleteAllPois();
-  });
-*/
+
   test('create a user', async function () {
     const returnedUser = await poiService.createUser(newUser);
     assert.equal(returnedUser.firstName, newUser.firstName);
@@ -41,18 +32,6 @@ suite('Users API tests', function () {
     assert.equal(returnedUser.password, newUser.password);
     assert(_.some([returnedUser], newUser), ' returnedUSer must be a superset of newUser'); //test the new user object is the same as what is expected - rather than checking each field
     assert.isDefined(returnedUser._id);
-  });
-  test('create a poi', async function() {
-      const returnedUser = await poiService.createUser(newUser);
-      await poiService.createPoi(returnedUser._id, newPoi);
-      const returnedPois = await poiService.getPois(returnedUser._id);
-
-
-    console.log(returnedPois);
-    assert.equal(returnedPois.length, 1);
-    //TODO fix this
-
-    //assert(_.some([returnedPois[0]], newPoi), 'returned poi must be a superset of poi');
   });
 
   test('delete a user', async function () {
