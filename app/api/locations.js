@@ -6,21 +6,21 @@ const Boom = require('@hapi/boom');
 
 const Locations = {
   findAll: {
-    auth: false,
+    auth: {strategy: 'jwt'},
     handler: async function(request, h) {
       const location = await Location.find();
       return location;
     }
   },
   deleteAll: {
-    auth: false,
+    auth: {strategy: 'jwt'},
     handler: async function(request, h) {
      const location =  await Location.deleteMany({});
       return { success: true };
     }
   },
 createLocation:{
-  auth: false,
+  auth: {strategy: 'jwt'},
       handler: async function(request, h) {
     let location = new Location(request.payload);
     let locationResponse
