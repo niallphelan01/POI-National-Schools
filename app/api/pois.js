@@ -10,7 +10,9 @@ const User = require('../models/user');
 
 const Pois = {
   findAll: {
-      auth: false,
+      auth: {
+          strategy: 'jwt',
+      },
       handler: async function (request, h) {
           try {
               const pois = await Poi.find().populate('location').find();

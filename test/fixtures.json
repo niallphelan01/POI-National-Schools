@@ -5,14 +5,14 @@
       "firstName": "basic",
       "lastName": "test",
       "email": "basic@test.com",
-      "password": "$2b$10$A8YmyKnFo/MYQAuf.UxtcumkekcekD7EuC9BJx0Kngk/LBXzTI142",
+      "password": "test",
       "level": "basic"
     },
     {
       "firstName": "admin",
       "lastName": "test",
       "email": "admin@test.com",
-      "password": "$2b$10$pkaH1uQVl3.AaDz0DE.3..HnvdntD5EVNCa9gkZ5J3ZTivULJenyy",
+      "password": "test",
       "level": "admin"
     },
     {
