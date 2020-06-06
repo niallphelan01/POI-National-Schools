@@ -17,10 +17,12 @@ module.exports = [
   { method: 'DELETE', path: '/api/pois', config: Pois.deleteAll},
   { method: 'DELETE', path: '/api/pois/{id}', config: Pois.deleteOne},
   { method: 'PUT', path: '/api/pois/{id}', config: Pois.updateOne},
+  { method: 'GET', path: '/api/pois/{id}', config: Pois.findByPoiId}, //get the pois by poisId
+
 
   { method: 'GET', path: '/api/locations', config: Locations.findAll }, //lists out all locations
   { method: 'POST', path: '/api/locations', config: Locations.createLocation }, //lists out all locations
   { method: 'DELETE', path: '/api/locations', config: Locations.deleteAll }, //delete all locations
 
-
+  { method: 'POST', path: '/api/users/authenticate', config: Users.authenticate },  //root for auth added
 ];

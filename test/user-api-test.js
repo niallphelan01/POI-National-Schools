@@ -12,34 +12,26 @@ suite('Users API tests', function () {
 
   const poiService = new PoiService(fixtures.poiService); //pointing to the localhost:3000
 
-  setup(async function () {
-    await poiService.deleteAllUsers(); //setup for populating the system
-    await poiService.deleteAllPois();
+  suiteSetup(async function() {
+    await poiService.deleteAllUsers();
+    //const returnedUser = await poiService.createUser(newUser);
+    //const response = await poiService.authenticate(newUser);
   });
 
-  teardown(async function () {
+
+  suiteTeardown(async function() {
     await poiService.deleteAllUsers();
-    await poiService.deleteAllPois();
+    poiService.clearAuth();
   });
 
   test('create a user', async function () {
     const returnedUser = await poiService.createUser(newUser);
-   // assert.equal(returnedUser.firstName, newUser.firstName);
-   // assert.equal(returnedUser.lastName, newUser.lastName);
-   // assert.equal(returnedUser.email, newUser.email);
-   // assert.equal(returnedUser.password, newUser.password);
+    assert.equal(returnedUser.firstName, newUser.firstName);
+    assert.equal(returnedUser.lastName, newUser.lastName);
+    assert.equal(returnedUser.email, newUser.email);
+    assert.equal(returnedUser.password, newUser.password);
     assert(_.some([returnedUser], newUser), ' returnedUSer must be a superset of newUser'); //test the new user object is the same as what is expected - rather than checking each field
     assert.isDefined(returnedUser._id);
-  });
-  test('create a poi', async function() {
-      const returnedUser = await poiService.createUser(newUser);
-      await poiService.createPoi(returnedUser._id, newPoi);
-      const returnedPois = await poiService.getPois(returnedUser._id);
-
-
-    console.log(returnedPois);
-    assert.equal(returnedPois.length, 1);
-    assert(_.some([returnedPois[0]], newPoi), 'returned poi must be a superset of poi');
   });
 
   test('delete a user', async function () {
@@ -61,15 +53,20 @@ suite('Users API tests', function () {
     assert.isNull(c2);
   });
   test('get all users', async function () {
+    await poiService.deleteAllUsers();
     for (let c of users) {
       await poiService.createUser(c);
     }
+    console.log("All users")
     const allUsers = await poiService.getUsers();
+
+    console.log(allUsers)
     assert.equal(allUsers.length, users.length);
   });
   test('get users detail', async function () {
+    await poiService.deleteAllUsers();
     for (let c of users) {
-      await poiService.createUser(c);
+        await poiService.createUser(c);
     }
     const allUsers = await poiService.getUsers();
     for (var i = 0; i < users.length; i++) {

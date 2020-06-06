@@ -45,9 +45,25 @@ class PoiService {
       return null;
     }
   }
+  async getPoisbyId(id) {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/pois/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
   async getPois(id) {
     try {
       const response = await axios.get(this.baseUrl + '/api/users/' + id + '/pois');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async getAllPois() {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/pois');
       return response.data;
     } catch (e) {
       return null;
@@ -61,7 +77,26 @@ class PoiService {
       return null;
     }
   }
-
+  async deleteOnePoi(id) {
+    try {
+      const response = await axios.delete(this.baseUrl + '/api/pois/' + id);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async authenticate(user) {
+    try {
+      const response = await axios.post(this.baseUrl + '/api/users/authenticate', user);
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.token;
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async clearAuth(user) {
+    axios.defaults.headers.common['Authorization'] = '';
+  }
 }
 
 module.exports = PoiService;

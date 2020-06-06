@@ -5,14 +5,14 @@
       "firstName": "basic",
       "lastName": "test",
       "email": "basic@test.com",
-      "password": "$2b$10$A8YmyKnFo/MYQAuf.UxtcumkekcekD7EuC9BJx0Kngk/LBXzTI142",
+      "password": "test",
       "level": "basic"
     },
     {
       "firstName": "admin",
       "lastName": "test",
       "email": "admin@test.com",
-      "password": "$2b$10$pkaH1uQVl3.AaDz0DE.3..HnvdntD5EVNCa9gkZ5J3ZTivULJenyy",
+      "password": "test",
       "level": "admin"
     },
     {
@@ -126,6 +126,27 @@
     "Gaeltacht" : "N",
     "M_13_14" : "200",
     "F_13_14" : "199",
+    "T_13_14" : "399",
+    "xcoord" : "276212",
+    "ycoord" : "176121",
+    "Long" : "-6.86912",
+    "Lat" : "52.8307",
+    "Region": "east"
+  },
+  "invalidPoi":
+  {
+    "Roll_No" : "17501Q",
+    "Off_Name" : "Bennekerry National School",
+    "Add_2" : "Co Carlow",
+    "Add_3" : "",
+    "Add_4" : "",
+    "County" : "Carlow",
+    "Ethos" : "CATHOLIC",
+    "Island" : "N",
+    "DEIS" : "N",
+    "Gaeltacht" : "N",
+    "M_13_14" : "abc",
+    "F_13_14" : "abd",
     "T_13_14" : "399",
     "xcoord" : "276212",
     "ycoord" : "176121",
