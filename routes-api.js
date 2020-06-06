@@ -22,5 +22,5 @@ module.exports = [
   { method: 'POST', path: '/api/locations', config: Locations.createLocation }, //lists out all locations
   { method: 'DELETE', path: '/api/locations', config: Locations.deleteAll }, //delete all locations
 
-
+  { method: 'POST', path: '/api/users/authenticate', config: Users.authenticate },  //root for auth added
 ];
