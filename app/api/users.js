@@ -26,18 +26,21 @@ const schema = Joi.object({
 const Users = {
   authenticate: {
     auth: false,
-    handler: async function(request, h) {
+    handler: async function (request, h) {
       try {
         const user = await User.findOne({ email: request.payload.email });
         if (!user) {
-          return Boom.notFound('Authentication failed. User not found');
+          return Boom.unauthorized('User not found');
+        } else if (user.password !== request.payload.password) {
+          return Boom.unauthorized('Invalid password');
+        } else {
+          const token = utils.createToken(user);
+          return h.response({ success: true, token: token }).code(201);
         }
-        const token = utils.createToken(user);
-        return h.response({ success: true, token: token }).code(201);
       } catch (err) {
         return Boom.notFound('internal db failure');
       }
-    }
+    },
   },
   find: {
     auth: false,
@@ -96,7 +99,7 @@ const Users = {
     auth: false,
     handler: async function(request, h) {
       const response = await User.deleteOne({ _id: request.params.id });
-      if (response.deletedCount == 1) {
+      if (response.deletedCount === 1) {
         return { success: true };
       }
       return Boom.notFound('id not found');
