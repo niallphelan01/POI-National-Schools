@@ -3,6 +3,9 @@ const Boom = require('@hapi/boom'); // required to give the response of not foun
 const utils = require('./utils.js');
 const User = require('../models/user');
 const Joi = require('@hapi/joi');
+const bcrypt = require('bcrypt');          // ADDED
+const saltRounds = 10;
+
 const schema = Joi.object({
   firstName: Joi.string()
       .alphanum()
@@ -31,8 +34,9 @@ const Users = {
         const user = await User.findOne({ email: request.payload.email });
         if (!user) {
           return Boom.unauthorized('User not found');
-        } else if (user.password !== request.payload.password) {
-          return Boom.unauthorized('Invalid password');
+        }
+          else if (!await user.comparePassword(request.payload.password)) {
+            return Boom.unauthorized('Invalid password');
         } else {
           const token = utils.createToken(user);
           return h.response({ success: true, token: token }).code(201);
@@ -75,6 +79,8 @@ const Users = {
           password: newUser.password,
           email: newUser.email
         });
+        const hash = await bcrypt.hash(request.payload.password, saltRounds);
+        newUser.password = hash;
         const user = await newUser.save();
         if (user) {
           return h.response(user).code(201);
@@ -114,10 +120,12 @@ const Users = {
       const newUser = request.payload;
       console.log("New User object")
       console.log(newUser);
+      const hash = await bcrypt.hash(newUser.password, saltRounds); //hash the password
+
       userData.firstName = newUser.firstName;
       userData.lastName = newUser.lastName;
       userData.email = newUser.email;
-      userData.password = newUser.password;
+      userData.password = hash;
       userData.level = newUser.level;
 
 
