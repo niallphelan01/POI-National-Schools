@@ -15,7 +15,7 @@ const Locations = {
   deleteAll: {
     auth: false,
     handler: async function(request, h) {
-      await Locations.deleteMany({});
+     const location =  await Location.deleteMany({});
       return { success: true };
     }
   },

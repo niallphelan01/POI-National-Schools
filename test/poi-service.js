@@ -26,9 +26,17 @@ class PoiService {
     const response = await axios.post(this.baseUrl + '/api/users', newUser);
     return response.data;
   }
+  async createLocation(newLocation) {
+    const response = await axios.post(this.baseUrl + '/api/locations', newLocation);
+    return response.data;
+  }
 
   async deleteAllUsers() {
     const response = await axios.delete(this.baseUrl + '/api/users');
+    return response.data;
+  }
+  async deleteAlllocations() {
+    const response = await axios.delete(this.baseUrl + '/api/locations');
     return response.data;
   }
 
@@ -64,6 +72,14 @@ class PoiService {
   async getAllPois() {
     try {
       const response = await axios.get(this.baseUrl + '/api/pois');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+  async getAlllocations() {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/locations');
       return response.data;
     } catch (e) {
       return null;

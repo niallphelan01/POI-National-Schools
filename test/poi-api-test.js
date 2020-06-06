@@ -1,6 +1,7 @@
 'use strict';
 const _ = require('lodash');
 const assert = require('chai').assert;
+const expect = require('chai').expect;
 const PoiService = require('./poi-service');
 const fixtures = require('./fixtures.json');
 
@@ -33,9 +34,22 @@ suite('Users API tests', function () {
 
 
         console.log(returnedPois);
+        console.log(newPoi);
         assert.equal(returnedPois.length, 1);
         //TODO fix this
-       // assert(_.some([returnedPois[0]], newPoi), 'returned poi must be a superset of poi');
+        expect([returnedPois[0].AIRO_ID,returnedPois[0].Roll_No,returnedPois[0].Off_Name,returnedPois[0].Add_1
+                ,returnedPois[0].Add_2, returnedPois[0].Add_3,returnedPois[0].Add_4,returnedPois[0].County, returnedPois[0].Ethos
+                ,returnedPois[0].Island,returnedPois[0].DEIS, returnedPois[0].Gaeltacht, returnedPois[0].M_13_14
+                ,returnedPois[0].F_13_14,returnedPois[0].T_13_14,returnedPois[0].location,returnedPois[0].xcoord,returnedPois[0].ycoord
+                ,returnedPois[0].Region]).to.have.members([newPoi.Roll_No, newPoi.AIRO_ID, newPoi.Off_Name,newPoi.Add_1
+                ,newPoi.Add_2, newPoi.Add_3,newPoi.Add_4,newPoi.County, newPoi.Ethos
+                ,newPoi.Island,newPoi.DEIS, newPoi.Gaeltacht, newPoi.M_13_14
+                ,newPoi.F_13_14,newPoi.T_13_14,newPoi.location,newPoi.xcoord,newPoi.ycoord
+                ,newPoi.Region]);
+
+        //check of unordered deep equality
+       // https://medium.com/building-ibotta/testing-arrays-and-objects-with-chai-js-4b372310fe6d
+
     });
 
     test('get all pois', async function () {
