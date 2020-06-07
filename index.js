@@ -23,7 +23,14 @@ const os = require("os");
 
 const server = Hapi.server({
     port: process.env.PORT || 3000,
-    routes: { cors: true }
+
+    routes: { cors: true },
+    /*tls: {
+        key: fs.readFileSync('certs/webserver.key'),
+        cert: fs.readFileSync('certs/webserver_self.crt')
+    }
+
+     */
 });
 
 require('./app/models/db');  //required to run mongodb
