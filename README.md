@@ -1,3 +1,5 @@
+# `National schools point of interest site`
+
 This is an application to display and add POI information on Primary schools in the state.
 
 Visitors to the site will be requested to signup/login.
@@ -17,5 +19,8 @@ and will receive and email notifying of the request to become and Admin.
 
 Admin users can add photos to the School information and amend other details that may be incorrect.
 
+## `Front end client`
 
+A front end client for this application is available at https://github.com/niallphelan01/poi-national-schools-aurelia.git
 
+This was implemented using Aurelia.
