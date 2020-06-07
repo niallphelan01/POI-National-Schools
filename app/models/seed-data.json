@@ -38,7 +38,7 @@
       "firstName": "superadmin",
       "lastName": "test",
       "email": "superadmin@test.com",
-      "password": "secret",
+      "password": "$2b$10$N6oac5gXMFiIKjm/bOe3eeGHztlTTmQLeDgbuUjFCelL/gUJpygoS",
       "level": "superAdmin"
     }
   },
