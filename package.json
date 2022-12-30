@@ -44,7 +44,7 @@
     "axios": "^0.19.2",
     "chai": "^4.2.0",
     "chai-exclude": "^2.0.2",
-    "mocha": "^7.1.2",
+    "mocha": "^10.2.0",
     "prettier": "^1.19.1"
   },
   "prettier": {
